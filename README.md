@@ -4,7 +4,7 @@
 ```bash
 docker run --rm \
   -v "${PWD}":/home/jovyan/work \
-  -p 8888:8888
+  -p 8888:8888 \
   mitinarsenyhse/statistics_hw
 ```
 ### Build
