@@ -8,3 +8,4 @@ RUN pip install -r /tmp/requirements.txt \
   && jupyter nbextension enable equation-numbering/main \
   && jupyter nbextension enable autosavetime/main
 
+COPY work/ work/
