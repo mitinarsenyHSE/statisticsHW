@@ -9,9 +9,9 @@ docker run --rm \
 ```
 ### Build
 ```bash
-docker build -t mitinarsenyhse/statistics_hw .
+docker build -t mitinarsenyhse/statistics_hw:latest .
 ```
 ### Push
 ```bash
-docker push mitinarsenyhse/statistics
+docker push mitinarsenyhse/statistics:latest
 ```
