@@ -31,7 +31,3 @@ docker run --rm \
 ```bash
 docker build -t mitinarsenyhse/statistics_hw:latest .
 ```
-### Push
-```bash
-docker push mitinarsenyhse/statistics:latest
-```
