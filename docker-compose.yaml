@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ./:/data
+    ports:
+      - "8888:8888"

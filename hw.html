@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Митин Арсений" />
+  <title>Домашняя работа</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
+    }}});</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Домашняя работа</h1>
+<p class="author">Митин Арсений</p>
+</header>
+<!-- mathFunc{name, leftDelim, argument, rightDelim} -->
+<!-- \providecommand{\mathFunc}[4]{#1\left#2\, #3 \,\right#4}
+\providecommand{\mathbbFunc}[4]{\mathFunc{\mathbb{#1}}{#2}{#3}{#4}}
+\providecommand{\mathrmFunc}[4]{\mathFunc{\mathrm{#1}}{#2}{#3}{#4}}
+\providecommand{\Prob}[1]{\mathbbFunc{P}{(}{#1}{)}}
+\providecommand{\Expect}[1]{\mathbbFunc{E}{[}{#1}{]}}
+\providecommand{\Var}[1]{\mathrmFunc{Var}{[}{#1}{]}} -->
+<h1 id="домашнее-задание-1">Домашнее задание 1</h1>
+<h2 id="выбор-распределений">Выбор распределений</h2>
+<p>Выбранные распределения:</p>
+<ul>
+<li>Дискретное: <em>гипергеометрическое</em></li>
+<li>Непрерывное: <em>нормальное</em></li>
+</ul>
+<h2 id="описание-основных-характеристик-распределений">Описание основных характеристик распределений</h2>
+<h3 id="гипергеометрическое-распределение">Гипергеометрическое распределение</h3>
+<p>Гипергеометрическое распределение - дискретное распределение, описывающее вероятность события, при котором ровно <span class="math inline">k</span> из <span class="math inline">n</span> случайно выбранных элементов окажутся <em>помеченными</em>, при этом выборка осуществляется из множества мощности <span class="math inline">N</span>, в котором присутствует <span class="math inline">m</span> помеченных элементов. Считается, что каждый из элементов может быть выбран с одинаковой вероятностью <span class="math inline">\frac{1}{N}</span>. Запишем это формально: <span class="math display">\begin{gathered}
+    N \in \mathbb{N},\ m \in \overline{0, N},\ n \in \overline{0, N},\\
+    k \in \overline{0, n}
+\end{gathered}</span> Тогда <span class="math inline">HG(D, N, n)</span> описывает вероятность события, при котором ровно <span class="math inline">k</span> из <span class="math inline">n</span> элементов выборки окажутся <em>помеченными</em>: <span class="math display">\begin{gathered}
+    \left\{\xi \sim HG(N, m, n) \right\}\\
+    \large\Updownarrow\\
+    \left\{\Prob{\xi=k} = \frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}\right\}
+\end{gathered}</span></p>
+<h4 id="математическое-ожидание-гипергеометрического-распределения">Математическое ожидание гипергеометрического распределения</h4>
+<p>По определению, математическое ожидание случайной величины <span class="math inline">\xi</span> – это ее <span class="math inline">1^\text{й}</span> начальный момент. Для начала, найдем <span class="math inline">k^\text{й}</span> начальный момент для <span class="math inline">\xi</span>: <span class="math display">\Expect{\xi^r}
+= \sum_{k=0}^{n} k^r \cdot \Prob{\xi=k}
+= \sum_{k=0}^{n} k^r\frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}</span> Можем считать, что сумма берется при <span class="math inline">k</span> от <span class="math inline">1</span> до <span class="math inline">n</span>,так как слагаемое при <span class="math inline">k=0</span> будет равно <span class="math inline">0</span>. Заметим, что <span class="math display">\begin{aligned}
+    k\binom{m}{k} &amp;= k \frac{m!}{k!(m-k)!} =\\
+                &amp;= k \frac{m \cdot (m-1)!}{k \cdot (k-1)! \cdot (m-k)!} =\\
+                &amp;= m \frac{(m-1)!}{(k-1)! \cdot (m-1 - (k-1))!} =\\
+                &amp;= m \binom{m-1}{k-1}
+\end{aligned}</span> и, как следствие, <span class="math display">\binom{N}{n}
+= \frac{1}{n} \cdot n \cdot \binom{N}{n}
+= \frac{1}{n} N \binom{N-1}{n-1}</span> Подставим TODO и TODO в TODO: <span class="math display">\Expect{\xi^r} = \frac{n \cdot m}{N}
+\sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}</span> Положим <span class="math inline">j := k-1</span> и изменим индекс суммирования с на <span class="math inline">j = \overline{0, n-1}</span>. Заметим, что <span class="math inline">n - k = n - (j+1) = (n-1) - j</span> и <span class="math inline">N - m = (N-1) - (m-1)</span>: <span class="math display">\Expect{\xi^r} = \frac{n \cdot m}{N} \textcolor{red}{\sum_{j=0}^{n-1} (j+1)^{r-1}
+\frac{\binom{m-1}{j}\binom{(N-1) - (m-1)}{(n-1) - j}}{\binom{N-1}{n-1}}}</span> Заметим, что выделенная красным цветом часть выражения может быть записана, как <span class="math inline">\Expect{(\theta+1)^{r-1}}</span>, где <span class="math inline">\theta \sim HG(N-1, m-1, n-1)</span>. Следовательно, <span class="math display">\Expect{\xi^r} = \frac{n \cdot m}{N} \Expect{(\theta+1)^{r-1}}</span> Таким образом, <span class="math display">\boxed{
+    \Expect{\xi} = \frac{n \cdot m}{N}
+}</span></p>
+<h4 id="дисперсия-гипергеометрического-распределения">Дисперсия гипергеометрического распределения</h4>
+<p>По определению дисперсии, <span class="math display">\begin{aligned}
+    \Var{\xi} &amp;= \Expect{\left(\xi - \Expect{\xi}\right)^2} =\\
+              &amp;= \Expect{\xi^2} - \left(\Expect{xi}\right)^2
+\end{aligned}</span></p>
+<p>Выведем <span class="math inline">2^\text{й}</span> начальный момент из TODO: <span class="math display">\Expect{\xi^2}
+= \frac{n \cdot m}{N}\Expect{\theta+1}
+= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1}+1\right)</span> Подставим TODO и TODO в TODO: <span class="math display">\begin{aligned}
+    \Var{\xi} &amp;= \Expect{\xi^2} - \left(\Expect{\xi}\right)^2 =\\
+              &amp;= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1}+1\right)
+                    - \left(\frac{n \cdot m}{N}\right)^2=\\
+              &amp;= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1} + 1
+                   - \frac{n \cdot m}{N}\right)
+\end{aligned}</span> Таким образом, <span class="math display">\boxed{
+    \Expect{\xi} = \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1} + 1 - \frac{n \cdot m}{N}\right)
+}</span></p>
+<h4 id="производящая-функция-гипергеометрического-распределения">Производящая функция гипергеометрического распределения</h4>
+<p>По определению производящей функции, <span class="math display">M_\xi(t) = \Expect{e^{t\xi}}</span> То есть, <span class="math display">\begin{aligned}
+    M_\xi(t) &amp;= \sum_{k=0}^{n} e^{tk}\Prob{\xi=k} =\\
+             &amp;= \sum_{k=0}^{n} e^{tk}\frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}
+\end{aligned}</span></p>
+<p>TODO</p>
+<h4 id="характеристическая-функция-гипергеометрического-распределения">Характеристическая функция гипергеометрического распределения</h4>
+<p>TODO</p>
+<h4 id="гистограмма-вероятностей-гипергеометрического-распределения">Гистограмма вероятностей гипергеометрического распределения</h4>
+<p>Построим гистограмму вероятностей для <span class="math inline">k \in \overline{0, n}</span>:</p>
+<p>TODO</p>
+<h4 id="функция-распределения-гипергеометрического-распределения">Функция распределения гипергеометрического распределения</h4>
+<p>По определению, функция распределения <span class="math inline">F_\xi(k) = \Prob{\xi &lt; k}</span>. Событие <span class="math inline">\{\xi &lt; k\} = \bigcup\limits_{i=0}^{k-1}\{\xi=i\}</span>. События <span class="math inline">\{\xi=i\}\; \forall i \in \overline{0, k-1}</span> являются попарно несовместными. То есть <span class="math inline">\forall i,j \in \overline{0, k-1}: i \neq j</span> выполняется <span class="math inline">\{\xi=i\}\large\cap\{\xi=j\}=\emptyset</span>. Из этого следует, что <span class="math display">\Prob{\xi &lt; k} = \sum_{i=0}^{k-1}\Prob{\xi = i}</span> Подставим TODO в это выражение и получим: <span class="math display">F_\xi(k)
+= \sum_{i=0}^{k-1}\Prob{\xi = i}
+= \sum_{i=0}^{k-1}\frac{\binom{m}{i}\binom{N-m}{n-i}}{\binom{N}{n}}</span></p>
+<p>Построим график этой функции, учитывая, что аргументом <span class="math inline">k</span> должно быть натуральное число, не превосходящее <span class="math inline">n</span>:</p>
+<p>TODO</p>
+<h3 id="нормальное-распределение">Нормальное распределение</h3>
+<p>Нормальное распределение - непрерывное распределение, описывающее поведение величины отклонения измеряемого значения <span class="math inline">x</span> от истинного значения <span class="math inline">\mu</span> (которое является математическим ожиданием) и в рамках некоторого разброса <span class="math inline">\sigma</span> (среднеквадратичного отклонения). Запишем это формально: <span class="math display">\begin{gathered}
+    \left\{ \eta \sim N(\mu, \sigma^2) \right\}\\
+    \Updownarrow\\
+    \left\{\begin{gathered}
+        F_\eta(x) = \Prob{\eta &lt; x} = \int_{-\infty}^{x} f_\eta(x)dx,\\
+        \text{где} f_\eta(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+    \end{gathered}\right\}
+\end{gathered}</span> <span class="math inline">f_\eta(x)</span> называется плотностью вероятности.</p>
+<h4 id="математическое-ожидание-нормального-распределения">Математическое ожидание нормального распределения</h4>
+<p>Найдем математическое ожидание <span class="math inline">\eta \sim N(\mu, \sigma^2)</span>: <span class="math display">\begin{aligned}
+    \Expect{\eta} &amp;= \int_{-\infty}^{+\infty} x \cdot f_\eta(x)dx =\\
+                  &amp;= \int_{-\infty}^{+\infty} xe^{-\frac{(x-\mu)^2}{2\sigma^2}}dx =\\
+                  &amp;= \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{+\infty} xe^{-\frac{(x-\mu)^2}{2\sigma^2}}dx
+\end{aligned}</span> Сделаем замену <span class="math inline">t = \frac{x-\mu}{\sqrt{2}\sigma}</span>: <span class="math display">\begin{aligned}
+    \Expect{\eta} &amp;= \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{+\infty}(\sigma\sqrt{2}t + \mu)
+                    e^{-t^2} d\left(\frac{x-\mu}{\sqrt{2}\sigma}\right) =\\
+                  &amp;= \frac{\sigma\sqrt{2}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}te^{-t^2}dt
+                    + \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt =\\
+                  &amp;= \frac{\sigma\sqrt{2}}{\sqrt{\pi}}\left(\int_{-\infty}^{0}te^{-t^2}dt
+                    - \int_{-\infty}^{0}te^{-t^2}dt\right) + \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt =\\
+                  &amp;= \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt
+\end{aligned}</span> Заметим, что получившееся выражение содержит интеграл, который может быть сведен к интегралу <a href="https://ru.wikipedia.org/wiki/Гауссов_интеграл">Эйлера-Пуассона</a>: <span class="math display">\int_{-\infty}^{+\infty}e^{-t^2}dt = 2\int_{0}^{+\infty}e^{-t^2}dt = \sqrt{\pi}</span> Таким образом, <span class="math display">\boxed{
+    \Expect{\eta} = \mu
+}</span></p>
+<h4 id="дисперсия-нормального-распределения">Дисперсия нормального распределения</h4>
+<p>Подставим TODO в определение дисперсии TODO: <span class="math display">\begin{aligned}
+    \Var{\eta} &amp;= \Expect{(\eta - \mu)^2} =\\
+               &amp;= \int_{-\infty}^{+\infty} (x-\mu)^2 \cdot f_{\eta}(x)dx =\\
+               &amp;= \int_{-\infty}^{+\infty}(x-\mu)^2 \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx =\\
+               &amp;= \frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{+\infty}(x-\mu)^2 e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx
+\end{aligned}</span> Сделаем ту же замену переменной <span class="math inline">t = \frac{x-\mu}{\sqrt{2}\sigma}</span>, тогда <span class="math inline">x = t\sqrt{2}\sigma+\mu</span> и: <span class="math display">\begin{aligned}
+    \Var{\eta} &amp;= \frac{1}{\sigma\sqrt{2\pi}}
+                \int_{-\infty}^{+\infty}(\sqrt{2}\sigma)^2 t^2 e^{-t^2}d(t\sqrt{2}\sigma+\mu) =\\
+               &amp;= \frac{2\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t^2 e^{-t^2}dt
+\end{aligned}</span> Проинтегрируем по частям: <!-- TODO: | replace with \mid??? --> <span class="math display">\begin{aligned}
+    \Var{\eta} &amp;= \frac{\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t 2t e^{-t^2} dt =\\
+               &amp;= \frac{\sigma^2}{\sqrt{\pi}}\left(\left. -t e^{-t^2} \right|_{-\infty}^{+\infty}
+                 + \int_{-\infty}^{+\infty}e^{-t^2}dt\right)
+\end{aligned}</span> Здесь снова появляется интеграл <a href="https://ru.wikipedia.org/wiki/Гауссов_интеграл">Эйлера-Пуассона</a> и, в итоге, получаем: <span class="math display">\boxed{
+    \Var{\eta} = \sigma^2
+}</span> То есть, <span class="math inline">\sigma</span> является среднеквадратичным отклонением.</p>
+</body>
+</html>
