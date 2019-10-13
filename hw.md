@@ -63,9 +63,9 @@ $$\Expect{\xi^r} = \frac{n \cdot m}{N}
 \sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}$$
 Положим $j := k-1$ и изменим индекс суммирования с на $j = \overline{0, n-1}$.
 Заметим, что $n - k = n - (j+1) = (n-1) - j$ и $N - m = (N-1) - (m-1)$:
-$$\Expect{\xi^r} = \frac{n \cdot m}{N} \textcolor{red}{\sum_{j=0}^{n-1} (j+1)^{r-1}
+$$\Expect{\xi^r} = \frac{n \cdot m}{N} \textcolor{blue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
 \frac{\binom{m-1}{j}\binom{(N-1) - (m-1)}{(n-1) - j}}{\binom{N-1}{n-1}}}$$
-Заметим, что выделенная красным цветом часть выражения может быть записана, как
+Заметим, что выделенная часть выражения может быть записана, как
 $\Expect{(\theta+1)^{r-1}}$, где $\theta \sim HG(N-1, m-1, n-1)$.
 Следовательно,
 $$\Expect{\xi^r} = \frac{n \cdot m}{N} \Expect{(\theta+1)^{r-1}}$$
@@ -119,7 +119,7 @@ TODO
 
 Построим гистограмму вероятностей для $k \in \overline{0, n}$:
 
-TODO
+![Hist HG](assets/hg_hist.svg)
 
 #### Функция распределения гипергеометрического распределения
 

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/mitinarsenyhse/statisticsHW">
-    <img src=".assets/hse_logo.png" alt="HSE logo" width="20%" />
+    <img src="assets/hse_logo.png" alt="HSE logo" width="20%" />
   </a>
   <h1 align="center">Statistics</h1>
   <p align="center">
@@ -19,15 +19,28 @@
   </p>
 </p>
 
-## Usage
-### Run
+## Dependencies
+
+* [Docker](https://www.docker.com)
+
+## Jupyter Notebooks
+
+In order to launch Jypyter server for viewving and editing notebooks run:
+
+```bash
+docker-compose up --build
+```
+
+## Build
+
+In order to build `.pdf` document run:
 ```bash
 docker run --rm \
-  -v "${PWD}/work":/home/jovyan/work \
-  -p 8888:8888 \
-  mitinarsenyhse/statistics_hw
-```
-### Build
-```bash
-docker build -t mitinarsenyhse/statistics_hw:latest .
+    -v "${PWD}:/data" \
+    mitinarseny/pandoc \
+    --from markdown+latex_macros \
+    --pdf-engine=xelatex \
+    -V mainfont=Arial \
+    -o build/hw.pdf \
+    hw.md
 ```
