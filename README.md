@@ -18,7 +18,7 @@
 
 * [Docker](https://www.docker.com)
 
-## Jupyter Notebooks
+## Jupyter
 
 In order to launch Jypyter server for viewving and editing notebooks run:
 
@@ -26,7 +26,7 @@ In order to launch Jypyter server for viewving and editing notebooks run:
 docker-compose up --build
 ```
 
-## Build
+## Build PDF
 
 In order to build `.pdf` document run:
 ```bash
