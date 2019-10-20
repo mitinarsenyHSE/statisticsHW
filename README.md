@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/mitinarsenyhse/statisticsHW">
-    <img src="assets/hse_logo.png" alt="HSE logo" width="20%" />
+    <img src="assets/hseLogo.png" alt="HSE logo" width="20%" />
   </a>
   <h1 align="center">Statistics</h1>
   <p align="center">
@@ -20,22 +20,20 @@
 
 ## Jupyter
 
-In order to launch Jypyter server for viewving and editing notebooks run:
+In order to launch Jypyter server for viewing and editing notebooks run:
 
 ```bash
 docker-compose up --build
 ```
 
+Then navigate to `http://localhost:8888?token=<token_from_logs>` in your browser.
+
 ## Build PDF
 
 In order to build `.pdf` document run:
+
 ```bash
-docker run --rm \
-    -v "${PWD}:/data" \
-    mitinarseny/pandoc \
-    --from markdown+latex_macros \
-    --pdf-engine=xelatex \
-    -V mainfont=Arial \
-    -o build/hw.pdf \
-    hw.md
+docker run --rm -v "${PWD}:/data" --entrypoint="make" mitinarseny/panmake:2.7.3 pdf
 ```
+
+File `build/index.pdf` will be created after command succeed.

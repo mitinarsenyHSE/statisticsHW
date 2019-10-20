@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    env:
+        BUILD_BRANCH: gh-pages
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@master
+      - name: Make HTML for GitHub Pages
+        uses: docker://mitinarseny/panmake:2.7.3
+        with:
+          entrypoint: make
+      - name: GitHub Pages Deploy
+        uses: JamesIves/github-pages-deploy-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
