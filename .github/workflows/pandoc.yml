@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build with Pandoc
 
 on:
   push:
@@ -14,10 +14,11 @@ jobs:
     steps:
       - name: Checkout current branch
         uses: actions/checkout@master
-      - name: Make HTML for GitHub Pages
+      - name: Build with Pandoc
         uses: docker://mitinarseny/panmake:2.7.3
         with:
           entrypoint: make
+          args: pdf
       - name: GitHub Pages Deploy
         uses: JamesIves/github-pages-deploy-action@master
         env:

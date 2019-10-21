@@ -30,7 +30,7 @@ secnumdepth: 2
 ### Fonts ###
 
 fontenc: "T2A,T1"
-mainfont: Arial
+mainfont: Times New Roman
 
 ### Links ###
 linkcolor: blue
