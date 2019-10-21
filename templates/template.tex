@@ -271,14 +271,14 @@ $endif$
 $if(listings)$
 \usepackage{textcomp}
 \usepackage{listings}
-$if(listings-disable-numbers)$$else$
-\usepackage[space=true]{accsupp} % http://ctan.org/pkg/accsupp
-\providecommand{\nocopynumber}[1]{
-  \BeginAccSupp{method=escape,ActualText={}}
-  #1
-  \EndAccSupp{}
-}
-$endif$
+$-- $if(listings-disable-numbers)$$else$
+% \usepackage[space=true]{accsupp} % http://ctan.org/pkg/accsupp
+% \providecommand{\nocopynumber}[1]{
+%   \BeginAccSupp{method=escape,ActualText={}}
+%   #1
+%   \EndAccSupp{}
+% }
+$-- $endif$
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
@@ -301,7 +301,7 @@ $endif$
 $if(listings-disable-numbers)$
 $else$
   numbers           = left,
-  numberstyle       = $if(listings-numbers-size)$$listings-numbers-size$$else$\small$endif$\color[HTML]{$if(listing-numbers-color)$$listing-numbers-color$$else$808080$endif$}\nocopynumber,
+  numberstyle       = $if(listings-numbers-size)$$listings-numbers-size$$else$\small$endif$\color[HTML]{$if(listing-numbers-color)$$listing-numbers-color$$else$808080$endif$},%\nocopynumber,
   numbersep         = 3pt,
 $endif$
   prebreak          = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}},

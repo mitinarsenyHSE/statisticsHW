@@ -4,6 +4,11 @@ author: &author Митин Арсений (3 курс, СКБ171)
 date: '26.10.2019'
 keywords: [Statistics]
 lang: ru
+header-includes:
+  - |
+    ```{=latex}
+    \newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
+    ```
 
 ##### pandoc-crossref #####
 linkReferences: true
@@ -13,7 +18,6 @@ chapters: true
 ##### LaTeX Variables #####
 
 ### Layout ###
-
 # documentclass: scrreprt
 # classoption:
 #   - oneside
@@ -28,7 +32,6 @@ numbersections: true
 secnumdepth: 2
 
 ### Fonts ###
-
 fontenc: "T2A,T1"
 mainfont: Times New Roman
 
@@ -36,10 +39,8 @@ mainfont: Times New Roman
 linkcolor: blue
 
 ### Front matter ###
-
 toc: true
 toc-depth: 2
-
 
 # Variables for template https://github.com/Wandmalfarbe/pandoc-latex-template
 # book: true

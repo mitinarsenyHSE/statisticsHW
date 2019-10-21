@@ -1,6 +1,6 @@
 .SECONDEXPANSION:
 
-PANDOC_DEBUG ?= 0
+PANDOC_VERBOSE ?= 0
 
 SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
@@ -9,14 +9,14 @@ TEMPLATES_PATH ?= templates
 PANDOC = pandoc \
 	# --fail-if-warnings \
 
-ifeq ($(PANDOC_DEBUG), 1)
+ifeq ($(PANDOC_VERBOSE), 1)
 	PANDOC +=\
 	  --verbose
 endif
 
 PANDOC_MD_OPTIONS =\
 	--from=markdown+intraword_underscores \
-	--filter=pandoc-crossref \
+	# --filter=pandoc-crossref \
 	# --top-level-division=chapter \
 
 PANDOC_TEX_OPTIONS =\
