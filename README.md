@@ -5,7 +5,7 @@
   <h1 align="center">Statistics</h1>
   <p align="center">
     <a href="https://github.com/mitinarsenyHSE/statisticsHW/actions">
-      <img align="left" alt="Github Actions" src="https://github.com/mitinarsenyHSE/statisticsHW/workflows/pandoc/badge.svg">
+      <img align="left" alt="Github Actions" src="https://github.com/mitinarsenyHSE/statisticsHW/workflows/.github/workflows/pandoc.yml/badge.svg">
     </a>
       Homework
     <a href="https://nbviewer.jupyter.org/github/mitinarsenyHSE/statisticsHW/blob/master/src/hw.ipynb">
