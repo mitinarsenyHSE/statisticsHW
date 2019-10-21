@@ -26,9 +26,6 @@ secnumdepth: 2
 
 fontenc: "T2A,T1"
 mainfont: Arial
-monofont: Fira Code
-monofontoptions:
-  - Contextuals=Alternate
 
 ### Links ###
 
@@ -87,7 +84,7 @@ $$\begin{gathered}
 при котором ровно $k$ из $n$ элементов выборки окажутся *помеченными*:
 $$\begin{gathered}
     \left\{\xi \sim HG(N, m, n) \right\}\\
-    \large\Updownarrow\\
+    \Updownarrow\\
     \left\{\Prob{\xi=k} = \frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}\right\}
 \end{gathered}$$
 
@@ -236,7 +233,7 @@ plotly.offline.iplot(hg_hist_fig)
 Событие $\{\xi < k\} = \bigcup\limits_{i=0}^{k-1}\{\xi=i\}$.
 События $\{\xi=i\}\; \forall i \in \overline{0, k-1}$ являются попарно
 несовместными. То есть $\forall i,j \in \overline{0, k-1}: i \neq j$
-выполняется $\{\xi=i\}\large\cap\{\xi=j\}=\emptyset$. Из этого следует, что
+выполняется $\{\xi=i\}\cap\{\xi=j\}=\emptyset$. Из этого следует, что
 $$\Prob{\xi < k} = \sum_{i=0}^{k-1}\Prob{\xi = i}$$
 Подставим TODO в это выражение и получим:
 $$F_\xi(k)
@@ -306,7 +303,6 @@ $$\begin{aligned}
                &= \frac{2\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t^2 e^{-t^2}dt
 \end{aligned}$$
 Проинтегрируем по частям:
-<!-- TODO: | replace with \mid??? -->
 $$\begin{aligned}
     \Var{\eta} &= \frac{\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t 2t e^{-t^2} dt =\\
                &= \frac{\sigma^2}{\sqrt{\pi}}\left(\left. -t e^{-t^2} \right|_{-\infty}^{+\infty}
@@ -320,5 +316,6 @@ $$\boxed{
 
 ```python
 def f() -> int:
-    print(1)
+    if 1 != 2:
+        print("mitinarseny@gmail.com -> abc")
 ```

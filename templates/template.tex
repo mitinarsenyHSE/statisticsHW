@@ -104,10 +104,12 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \typeout{Setting Fonts for pdftex}
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
+  \typeout{Setting Fonts for luatex or xetex}
 $if(mathspec)$
   \ifxetex
     \usepackage{mathspec}
@@ -118,7 +120,7 @@ $else$
   \usepackage{unicode-math}
 $endif$
   \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+%   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
 $endif$
@@ -128,9 +130,12 @@ $endif$
 $if(monofont)$
   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
 $else$
-\setmonofont{Fira Code}[
-    Contextuals=Alternate  % Activate the calt feature
-  ]
+  \setmonofont[
+    Contextuals={Alternate} % Activate the calt feature
+  ]{Fira Code}
+  \makeatletter
+  \renewcommand*\verbatim@nolig@list{} % Empty the no-ligature list
+  \makeatother
 $endif$
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
@@ -356,11 +361,13 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \typeout{Setting Languages for pdftex}
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$if(lang)$$babel-lang$$else$english$endif$]{babel}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
 \else % if luatex or xetex
+  \typeout{Setting Languages for luatex or xetex}
   \usepackage{polyglossia}
   
   % See issue https://github.com/reutenauer/polyglossia/issues/127

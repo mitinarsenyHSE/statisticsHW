@@ -1,11 +1,18 @@
 .SECONDEXPANSION:
 
+DEBUG ?= 0
+
 SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
 TEMPLATES_PATH ?= templates
 
 PANDOC = pandoc \
 	# --fail-if-warnings \
+
+ifeq ($(DEBUG), 1)
+	PANDOC +=\
+	  --verbose
+endif
 
 PANDOC_MD_OPTIONS =\
 	--from=markdown+intraword_underscores \
