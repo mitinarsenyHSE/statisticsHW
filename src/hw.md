@@ -5,6 +5,11 @@ date: '26.10.2019'
 keywords: [Statistics]
 lang: ru
 
+##### pandoc-crossref #####
+linkReferences: true
+listings: true
+chapters: true
+
 ##### LaTeX Variables #####
 
 ### Layout ###
@@ -28,7 +33,6 @@ fontenc: "T2A,T1"
 mainfont: Arial
 
 ### Links ###
-
 linkcolor: blue
 
 ### Front matter ###
@@ -169,7 +173,7 @@ TODO
 
 #### Гистограмма вероятностей гипергеометрического распределения
 
-<!-- ```python
+```python
 from datetime import datetime
 from abc import ABC, abstractmethod
 from typing import List
@@ -187,7 +191,7 @@ class HG(object):
         self.n = n
     
     def p(self, k: int) -> float:
-        return sp.special.comb(self.m, k)*sp.special.comb(self.N-self.m, self.n-k) / sp.special.comb(self.N, self.n)
+        return sp.special.comb(self.m, k) * sp.special.comb(self.N-self.m, self.n-k) / sp.special.comb(self.N, self.n)
     
     def __str__(self) -> str:
         return f'HG({self.N}, {self.m}, {self.n})'
@@ -221,7 +225,7 @@ hg_hist_fig = go.Figure(
     ),
 )
 plotly.offline.iplot(hg_hist_fig)
-``` -->
+```
 
 Построим гистограмму вероятностей для $k \in \overline{0, n}$:
 

@@ -4,6 +4,16 @@ $-- footnote-backref-symbol: string ($\uparrow$)
 $-- footnote-backref-numberlinked: bool (false)
 $-- toc-own-page: bool (false)
 $-- float-placement-figure: string (H)
+$-- listings-default-language: string (Haskell)
+$-- listings-background-color: hex without # (FFFFFF)
+$-- listings-basic-color: hex without # (000000)
+$-- listings-comment-color: hex without # (009900)
+$-- listings-keyword-color: hex without # (000099)
+$-- listings-disable-numbers: bool (false)
+$-- listings-numbers-size: latex command (\small)
+$-- listings-numbers-color: hex without # (808080)
+$-- listings-string-color: hex without # (009966)
+$-- listings-rule-color: hew without # (808080)
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -259,17 +269,50 @@ $if(beamer)$
 \newif\ifbibliography
 $endif$
 $if(listings)$
+\usepackage{textcomp}
 \usepackage{listings}
+$if(listings-disable-numbers)$$else$
+\usepackage[space=true]{accsupp} % http://ctan.org/pkg/accsupp
+\providecommand{\nocopynumber}[1]{
+  \BeginAccSupp{method=escape,ActualText={}}
+  #1
+  \EndAccSupp{}
+}
+$endif$
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
 
 % https://github.com/tonsky/FiraCode/wiki/LaTeX-instructions
-\usepackage{lstfiracode}
+\usepackage{lstfiracode} % for FiraCodeStyle
+\usepackage{MnSymbol} % for \rhookswarrow
 \lstset{
-  language=C++,
-  style=FiraCodeStyle,   % Use predefined FiraCodeStyle
-  basicstyle=\ttfamily   % Use \ttfamily for source code listings
+  language=$if(listings-default-language)$$listings-default-language$$else$Haskell$endif$,
+  backgroundcolor   = \color[HTML]{$if(listings-background-color)$$listings-background-color$$else$FFFFFF$endif$},
+  basicstyle        = \ttfamily\scriptsize\color[HTML]{$if(listings-basic-color)$$listings-basic-color$$else$000000$endif$},
+  breaklines        = true,
+  breakatwhitespace = true,
+  breakautoindent   = true,
+  commentstyle      = \color[HTML]{$if(listings-comment-color)$$listings-comment-color$$else$009900$endif$},
+  frame             = l,
+  framesep          = 7pt,
+  keepspaces        = true,
+  keywordstyle      = \color[HTML]{$if(listings-keyword-color)$$listings-keyword-color$$else$000099$endif$},
+$if(listings-disable-numbers)$
+$else$
+  numbers           = left,
+  numberstyle       = $if(listings-numbers-size)$$listings-numbers-size$$else$\small$endif$\color[HTML]{$if(listing-numbers-color)$$listing-numbers-color$$else$808080$endif$}\nocopynumber,
+  numbersep         = 3pt,
+$endif$
+  prebreak          = \raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}},
+  postbreak         = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+  rulecolor         = \color[HTML]{$if(listings-rule-color)$$listings-rule-color$$else$808080$endif$},
+  showspaces        = false,
+  showstringspaces  = false,
+  stringstyle       = \color[HTML]{$if(listings-string-color)$$listings-string-color$$else$009966$endif$},
+  style             = FiraCodeStyle,
+  tabsize           = 2,
+  upquote           = true,
 }
 $endif$
 $if(lhs)$

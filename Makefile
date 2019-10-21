@@ -1,6 +1,6 @@
 .SECONDEXPANSION:
 
-DEBUG ?= 0
+PANDOC_DEBUG ?= 0
 
 SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
@@ -9,7 +9,7 @@ TEMPLATES_PATH ?= templates
 PANDOC = pandoc \
 	# --fail-if-warnings \
 
-ifeq ($(DEBUG), 1)
+ifeq ($(PANDOC_DEBUG), 1)
 	PANDOC +=\
 	  --verbose
 endif
@@ -18,6 +18,10 @@ PANDOC_MD_OPTIONS =\
 	--from=markdown+intraword_underscores \
 	--filter=pandoc-crossref \
 	# --top-level-division=chapter \
+
+PANDOC_TEX_OPTIONS =\
+	--listings
+
 
 PANDOC_TEMPLATE_BASENAME = $(TEMPLATES_PATH)/template
 
@@ -40,7 +44,7 @@ $(BUILD_PATH)/index.html: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_T
 .PHONY: tex
 tex: $(BUILD_PATH)/index.tex
 $(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) \
+	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_TEX_OPTIONS) \
 	  --template=$(word 2,$^) \
 	  --output=$@ \
 	  $<
@@ -48,7 +52,7 @@ $(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TE
 .PHONY: pdf
 pdf: $(BUILD_PATH)/index.pdf
 $(BUILD_PATH)/index.pdf: $(SOURCE_FILE) $$(addsuffix .tex,$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) \
+	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_TEX_OPTIONS) \
 	  --template=$(word 2,$^) \
 	  --pdf-engine=$(PDF_ENGINE) \
 	  --output=$@ \
