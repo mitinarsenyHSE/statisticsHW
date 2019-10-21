@@ -5,18 +5,48 @@ date: '26.10.2019'
 keywords: [Statistics]
 lang: ru
 
-# LaTeX Variables
+##### LaTeX Variables #####
+
+### Layout ###
+
 # documentclass: scrreprt
 # classoption:
 #   - oneside
 #   - openany
+geometry:
+  - margin=2.5cm
+  - includehead=true
+  - includefoot=true
+#   - centering
 papersize: a4
+numbersections: true
+secnumdepth: 2
+
+### Fonts ###
+
+fontenc: "T2A,T1"
+mainfont: Arial
+monofont: Fira Code
+monofontoptions:
+  - Contextuals=Alternate
+
+### Links ###
+
+linkcolor: blue
+
+### Front matter ###
+
+toc: true
+toc-depth: 2
+
+
 # Variables for template https://github.com/Wandmalfarbe/pandoc-latex-template
 # book: true
 # mainfont: Arial
 titlepage: true
-toc-own-page: true
 titlepage-background: "assets/titlepage-background.pdf"
+toc-own-page: true
+
 # titlepage-color: "07407B"
 # titlepage-text-color: "00"
 # titlepage-rule-color: "F7931E"

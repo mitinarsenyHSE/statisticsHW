@@ -4,43 +4,48 @@ SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
 TEMPLATES_PATH ?= templates
 
-PANDOC_OPTIONS =\
+PANDOC = pandoc \
+	# --fail-if-warnings \
+
+PANDOC_MD_OPTIONS =\
 	--from=markdown+intraword_underscores \
-	--toc \
-	--number-sections \
 	--filter=pandoc-crossref \
 	# --top-level-division=chapter \
 
-PANDOC_HTML_OPTIONS =\
-	--standalone \
-	--section-divs \
-	--katex
+PANDOC_TEMPLATE_BASENAME = $(TEMPLATES_PATH)/template
 
-PANDOC_TEX_OPTIONS =\
-	--template=$(TEMPLATES_PATH)/template.tex
-
-PANDOC_PDF_OPTIONS = $(PANDOC_TEX_OPTIONS) \
-	# --pdf-engine=xelatex
-
-need_template = $(addsuffix $(firstword $(suffix $1)),$(TEMPLATES_PATH)/template)
+PDF_ENGINE = lualatex
 
 .PHONY: all
 all: pdf html nojekyll
 
 .PHONY: html
 html: $(BUILD_PATH)/index.html
-$(BUILD_PATH)/index.html: $(SOURCE_FILE) $$(call need_template,$$@) | $$(@D)/.f
-	pandoc $(PANDOC_OPTIONS) $(PANDOC_HTML_OPTIONS) --output=$@ $<
+$(BUILD_PATH)/index.html: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
+	$(PANDOC) $(PANDOC_MD_OPTIONS) \
+	  --standalone \
+	  --template=$(word 2,$^) \
+	  --section-divs \
+	  --katex \
+	  --output=$@ \
+	  $<
 
 .PHONY: tex
 tex: $(BUILD_PATH)/index.tex
-$(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(call need_template,$$@)| $$(@D)/.f
-	pandoc $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) --output=$@ $<
+$(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
+	$(PANDOC) $(PANDOC_MD_OPTIONS) \
+	  --template=$(word 2,$^) \
+	  --output=$@ \
+	  $<
 
 .PHONY: pdf
 pdf: $(BUILD_PATH)/index.pdf
-$(BUILD_PATH)/index.pdf: $(SOURCE_FILE) | $$(@D)/.f
-	pandoc $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) --output=$@ $<
+$(BUILD_PATH)/index.pdf: $(SOURCE_FILE) $$(addsuffix .tex,$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
+	$(PANDOC) $(PANDOC_MD_OPTIONS) \
+	  --template=$(word 2,$^) \
+	  --pdf-engine=$(PDF_ENGINE) \
+	  --output=$@ \
+	  $<
 
 
 .PRECIOUS: $(BUILD_PATH)/.f
