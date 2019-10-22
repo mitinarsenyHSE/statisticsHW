@@ -15,7 +15,7 @@ jobs:
       - name: Checkout current branch
         uses: actions/checkout@master
       - name: Build with Pandoc
-        uses: docker://mitinarseny/panmake:2.7.3
+        uses: docker://mitinarseny/panmake:latest
         with:
           entrypoint: make
           args: pdf
