@@ -16,8 +16,12 @@ endif
 
 PANDOC_MD_OPTIONS =\
 	--from=markdown+intraword_underscores \
-	# --filter=pandoc-crossref \
+	--filter=pandoc-crossref \
 	# --top-level-division=chapter \
+
+PANDOC_HTML_OPTIONS =\
+	--css=../templates/template.css \
+	# --self-contained
 
 PANDOC_TEX_OPTIONS =\
 	--listings
@@ -33,9 +37,10 @@ all: pdf html nojekyll
 .PHONY: html
 html: $(BUILD_PATH)/index.html
 $(BUILD_PATH)/index.html: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) \
-	  --standalone \
+	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_HTML_OPTIONS) \
+	  --to=html5 \
 	  --template=$(word 2,$^) \
+	  --standalone \
 	  --section-divs \
 	  --katex \
 	  --output=$@ \

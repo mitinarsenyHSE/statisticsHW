@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Митин Арсений (3 курс, СКБ171)" />
+  <meta name="keywords" content="Statistics" />
+  <title>Домашняя работа по Математической Статистике</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../templates/template.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
+    }}});</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Домашняя работа по Математической Статистике</h1>
+<p class="author">Митин Арсений (3 курс, СКБ171)</p>
+<p class="date">26.10.2019</p>
+</header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
+<!-- mathFunc{name, leftDelim, argument, rightDelim} -->
+
+<section id="задание-1" class="level1">
+<h1>Задание №1</h1>
+<section id="выбор-распределений" class="level2">
+<h2>Выбор распределений</h2>
+<p>Выбранные распределения:</p>
+<ul>
+<li>Дискретное: <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение"><em>гипергеометрическое</em></a></li>
+<li>Непрерывное: <a href="https://ru.wikipedia.org/wiki/Нормальное_распределение"><em>нормальное</em></a></li>
+</ul>
+</section>
+<section id="описание-основных-характеристик-распределений" class="level2">
+<h2>Описание основных характеристик распределений</h2>
+<section id="гипергеометрическое-распределение" class="level3">
+<h3>Гипергеометрическое распределение</h3>
+<p>Гипергеометрическое распределение - дискретное распределение, описывающее вероятность события, при котором ровно <span class="math inline">k</span> из <span class="math inline">n</span> случайно выбранных элементов окажутся <em>помеченными</em>, при этом выборка осуществляется из множества мощности <span class="math inline">N</span>, в котором присутствует <span class="math inline">m</span> помеченных элементов. Считается, что каждый из элементов может быть выбран с одинаковой вероятностью <span class="math inline">\frac{1}{N}</span>. Запишем это формально: <span class="math display">\begin{gathered}
+    N \in \mathbb{N},\ m \in \overline{0, N},\ n \in \overline{0, N},\\
+    k \in \overline{0, n}
+\end{gathered}</span> Тогда <span class="math inline">HG(N, m, n)</span> описывает вероятность события, при котором ровно <span class="math inline">k</span> из <span class="math inline">n</span> элементов выборки окажутся <em>помеченными</em>: <span id="eq:hg_def"><span class="math display">\left\{\ \xi \sim HG(N, m, n)\ \right\}
+\iff
+\left\{\mathbb{P}\left(\, \xi=k \,\right) = \frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}\right\}\qquad(1.1)</span></span></p>
+<section id="математическое-ожидание" class="level4">
+<h4>Математическое ожидание</h4>
+<p>По определению, математическое ожидание случайной величины – это ее <span class="math inline">1^\text{й}</span> начальный момент. Для начала, найдем <span class="math inline">k^\text{й}</span> начальный момент для <span class="math inline">\xi</span> (это понадобится для дальнейших выводов): <span id="eq:hg_moment_raw_k_def"><span class="math display">\mathbb{E}\left[\, \xi^r \,\right]
+= \sum_{k=0}^{n} k^r \cdot \mathbb{P}\left(\, \xi=k \,\right)
+= \sum_{k=0}^{n} k^r\frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}\qquad(1.2)</span></span> Можем считать, что сумма берется при <span class="math inline">k=\overline{1,n}</span>, так как слагаемое при <span class="math inline">k=0</span> будет равно <span class="math inline">0</span>. Заметим, что <span id="eq:binom-1"><span class="math display">\begin{aligned}
+    k\binom{m}{k} &amp;= k \frac{m!}{k!(m-k)!} =\\
+                &amp;= k \frac{m \cdot (m-1)!}{k \cdot (k-1)! \cdot (m-k)!} =\\
+                &amp;= m \frac{(m-1)!}{(k-1)! \cdot \left(m-1 - (k-1)\right)!} =\\
+                &amp;= m \binom{m-1}{k-1}
+\end{aligned}\qquad(1.3)</span></span> и, как следствие, <span id="eq:binom-1-cons"><span class="math display">\binom{N}{n}
+= \frac{1}{n} \cdot n \cdot \binom{N}{n}
+= \frac{1}{n} N \binom{N-1}{n-1}\qquad(1.4)</span></span> Подставим <a href="#eq:binom-1">1.3</a> и <a href="#eq:binom-1-cons">1.4</a> в <a href="#eq:hg_moment_raw_k_def">1.2</a>: <span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N}
+\sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}</span> Положим <span class="math inline">j := k-1</span> и изменим индекс суммирования на <span class="math inline">j = \overline{0, n-1}</span>. Заметим, что <span class="math inline">n - k = n - (j+1) = (n-1) - j</span> и <span class="math inline">N - m = (N-1) - (m-1)</span>: <span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N} \textcolor{lightblue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
+\frac{\binom{m-1}{j}\binom{(N-1) - (m-1)}{(n-1) - j}}{\binom{N-1}{n-1}}}</span> Заметим, что выделенная часть выражения может быть записана, как <span class="math inline">\mathbb{E}\left[\, (\theta+1)^{r-1} \,\right]</span>, где <span class="math inline">\theta \sim HG(N-1, m-1, n-1)</span>. Следовательно, <span id="eq:hg_moment_raw_k"><span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N} \mathbb{E}\left[\, (\theta+1)^{r-1} \,\right]\qquad(1.5)</span></span> Таким образом, <span id="eq:hg_expected"><span class="math display">\boxed{
+    \mathbb{E}\left[\, \xi \,\right] = \frac{n \cdot m}{N}
+}\qquad(1.6)</span></span></p>
+</section>
+<section id="дисперсия" class="level4">
+<h4>Дисперсия</h4>
+<p>По определению дисперсии, <span id="eq:variance_def"><span class="math display">\mathrm{Var}\left[\, \xi \,\right] = \mathbb{E}\left[\, \left(\ \xi - \mathbb{E}\left[\, \xi \,\right]\ \right)^2 \,\right] = \mathbb{E}\left[\, \xi^2 \,\right] - \left(\ \mathbb{E}\left[\, \xi \,\right]\ \right)^2\qquad(1.7)</span></span> Выведем <span class="math inline">2^\text{й}</span> начальный момент из <a href="#eq:hg_moment_raw_k">1.5</a>: <span id="eq:hg_raw_moment_2"><span class="math display">\mathbb{E}\left[\, \xi^2 \,\right]
+= \frac{n \cdot m}{N}\mathbb{E}\left[\, \theta+1 \,\right]
+= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1}+1\right)\qquad(1.8)</span></span> Подставим <a href="#eq:hg_expected">1.6</a> и <a href="#eq:hg_raw_moment_2">1.8</a> в <a href="#eq:variance_def">1.7</a>: <span class="math display">\begin{aligned}
+    \mathrm{Var}\left[\, \xi \,\right] &amp;= \mathbb{E}\left[\, \xi^2 \,\right] - \left(\mathbb{E}\left[\, \xi \,\right]\right)^2 =\\
+              &amp;= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1}+1\right)
+                    - \left(\frac{n \cdot m}{N}\right)^2=\\
+              &amp;= \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1} + 1
+                   - \frac{n \cdot m}{N}\right)
+\end{aligned}</span> Таким образом, <span class="math display">\boxed{
+    \mathrm{Var}\left[\, \xi \,\right] = \frac{n \cdot m}{N}\left(\frac{(n-1)(m-1)}{N-1} + 1 - \frac{n \cdot m}{N}\right)
+}</span></p>
+</section>
+<section id="производящая-функция-моментов" class="level4">
+<h4>Производящая функция моментов</h4>
+<p>По определению, производящая функция моментов <span class="math inline">M_\xi(t)</span> для случайной величины <span class="math inline">\xi</span> – это математическое ожидание новой случайной величины <span class="math inline">e^{t\xi}</span>. То есть: <span id="eq:mgf_def"><span class="math display">M_\xi(t) = \mathbb{E}\left[\, e^{t\xi} \,\right]\qquad(1.9)</span></span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> производящая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span id="eq:hg_mgf"><span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^t\right)\qquad(1.10)</span></span> Здесь <span class="math inline">{}_{2}F_{1}</span> - это <a href="https://en.wikipedia.org/wiki/Hypergeometric_function">гипергеометрическая функция</a>, определенная следующим образом: <span class="math display">{}_{2}F_{1}(a,b;c;z) = \sum_{n=0}^{\infty} \frac{a^{(n)} b^{(n)}}{c^{(n)}} \frac{z^n}{n!}</span> , а <span class="math inline">x^{(n)}</span> - <a href="https://en.wikipedia.org/wiki/Falling_and_rising_factorials">возрастающий факториал</a>, определенный как: <span class="math display">x^{(n)} = \prod_{k=0}^{n-1} (x + k)</span></p>
+</section>
+<section id="характеристическая-функция" class="level4">
+<h4>Характеристическая функция</h4>
+<p>По определению, характеристическая функция случайно величины <span class="math inline">\xi</span> задается следующим образом: <span class="math display">\varphi_\xi (t) = \mathbb{E}\left[\, e^{it\xi} \,\right]</span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> характеристическая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^{it}\right)</span></p>
+</section>
+<section id="гистограмма-вероятностей" class="level4">
+<h4>Гистограмма вероятностей</h4>
+<p>Гистограмма – это графическое представление функции, приближающей плотность вероятности распределения на основе выборки из него.</p>
+<p>Чтобы построить гистограмму, сначала нужно разбить множество значений выборки на несколько отрезков. Чаще всего, берут отрезки одинаковой длины, чтобы облегчить восприятие получившегося результата, однако это необязательно. Далее подсчитывается количество вхождений элементов выборки в каждый из отрезков и рисуются прямоугольники, по площади пропорциональные количеству попавших элементов выборки в соответствующий отрезок.</p>
+<p>Вообще говоря, гистограмму можно использовать не только для приближения плотности на основе выборки, но и для визуализации самой плотности распределения, зная его плотность.</p>
+<p>Мы будем строить гистограмму вероятностей, писать будем на языке <a href="https://www.python.org">Python3</a> и использовать следующие библиотеки:</p>
+<ul>
+<li><a href="https://numpy.org">NumPy</a> для работы с массивами</li>
+<li><a href="https://www.scipy.org">SciPy</a> для комбинаторных и статистических функций</li>
+<li><a href="https://plot.ly/python/">Plotly</a> для визуализации</li>
+</ul>
+<p>Итак, для начала, определим класс гипергеометрического распределения <code>HG</code>, который будет содержать в себе информацию о параметрах <span class="math inline">N</span>, <span class="math inline">m</span> и <span class="math inline">n</span> и предоставлять метод <code>p(k)</code>, возвращающий вероятность принятия случайной величиной значения <code>k</code> при данных параметрах:</p>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">class</span> HG(<span class="bu">object</span>):</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, N: <span class="bu">int</span>, m: <span class="bu">int</span>, n: <span class="bu">int</span>):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="va">self</span>.N <span class="op">=</span> N</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="va">self</span>.m <span class="op">=</span> m</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    </span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="kw">def</span> p(<span class="va">self</span>, k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-10"><a href="#cb1-10"></a>        <span class="cf">return</span> sp.special.comb(<span class="va">self</span>.m, k) <span class="op">*</span> sp.special.comb(<span class="va">self</span>.N<span class="op">-</span><span class="va">self</span>.m, <span class="va">self</span>.n<span class="op">-</span>k) <span class="op">/</span> sp.special.comb(<span class="va">self</span>.N, <span class="va">self</span>.n)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    </span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">return</span> <span class="ss">f&#39;HG(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.N}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.m}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.n}</span><span class="ss">)&#39;</span></span></code></pre></div>
+<p>Далее создадим объект случайной величины <span class="math inline">\xi \sim HG(30, 15, 20)</span>:</p>
+<div class="sourceCode" id="cb2" data-startFrom="14"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 13;"><span id="cb2-14"><a href="#cb2-14"></a>xi <span class="op">=</span> HG(<span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span></code></pre></div>
+<p>Следующим шагом, определим интервал <span class="math inline">\overline{0, n}</span>, на котором мы будем рисовать нашу гистограмму:</p>
+<div class="sourceCode" id="cb3" data-startFrom="15"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 14;"><span id="cb3-15"><a href="#cb3-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a>hist_data_x <span class="op">=</span> np.arange(xi.n<span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
+<p>И, наконец, построим гистограмму и выведем ее:</p>
+<div class="sourceCode" id="cb4" data-startFrom="18"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 17;"><span id="cb4-18"><a href="#cb4-18"></a><span class="im">import</span> plotly</span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="im">import</span> plotly.graph_objs <span class="im">as</span> go</span>
+<span id="cb4-20"><a href="#cb4-20"></a>hg_hist_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    data<span class="op">=</span>(go.Scatter(</span>
+<span id="cb4-22"><a href="#cb4-22"></a>        x<span class="op">=</span><span class="bu">list</span>(hist_data_x),</span>
+<span id="cb4-23"><a href="#cb4-23"></a>        y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(xi.p, hist_data_x)),</span>
+<span id="cb4-24"><a href="#cb4-24"></a>        mode<span class="op">=</span><span class="st">&#39;markers&#39;</span>,</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    ),),</span>
+<span id="cb4-26"><a href="#cb4-26"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb4-27"><a href="#cb4-27"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb4-28"><a href="#cb4-28"></a>            text<span class="op">=</span><span class="vs">r&#39;$\xi \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(xi) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb4-29"><a href="#cb4-29"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb4-30"><a href="#cb4-30"></a>        ),</span>
+<span id="cb4-31"><a href="#cb4-31"></a>        yaxis<span class="op">=</span>go.layout.YAxis(title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb4-32"><a href="#cb4-32"></a>            text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\xi=k)$&#39;</span>,</span>
+<span id="cb4-33"><a href="#cb4-33"></a>        )),</span>
+<span id="cb4-34"><a href="#cb4-34"></a>        xaxis<span class="op">=</span>go.layout.XAxis(title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb4-35"><a href="#cb4-35"></a>            text<span class="op">=</span><span class="vs">r&#39;$k$&#39;</span>,</span>
+<span id="cb4-36"><a href="#cb4-36"></a>        )),</span>
+<span id="cb4-37"><a href="#cb4-37"></a>        paper_bgcolor<span class="op">=</span><span class="st">&#39;rgba(0,0,0,0)&#39;</span>,</span>
+<span id="cb4-38"><a href="#cb4-38"></a>    ),</span>
+<span id="cb4-39"><a href="#cb4-39"></a>)</span>
+<span id="cb4-40"><a href="#cb4-40"></a>plotly.offline.iplot(hg_hist_fig)</span></code></pre></div>
+<p>Получившаяся гистограмма имеет следующий вид:</p>
+<figure>
+<img src="../assets/hg_hist.svg" alt="" /><figcaption>Гистограмма вероятностей гипергеометрического распределения</figcaption>
+</figure>
+</section>
+<section id="функция-распределения" class="level4">
+<h4>Функция распределения</h4>
+<p>По определению, функция распределения <span class="math inline">F_\xi(k) = \mathbb{P}\left(\, \xi &lt; k \,\right)</span>. Для дискретной случайной величины событие <span class="math inline">\{\xi &lt; k\} = \bigcup\limits_{i=0}^{k-1}\{\xi=i\}</span>. Каждое из событий <span class="math inline">\{\xi=i\}\; \forall i \in \overline{0, k-1}</span> являются попарно несовместными. То есть <span class="math inline">\forall i,j \in \overline{0, k-1}: i \neq j</span> выполняется <span class="math inline">\{\xi=i\}\cap\{\xi=j\}=\emptyset</span>. Из этого следует, что <span class="math display">\mathbb{P}\left(\, \xi &lt; k \,\right) = \sum_{i=0}^{k-1}\mathbb{P}\left(\, \xi = i \,\right)</span> Подставим <a href="#eq:hg_def">1.1</a> в это выражение и получим: <span class="math display">F_\xi(k)
+= \sum_{i=0}^{k-1}\mathbb{P}\left(\, \xi = i \,\right)
+= \sum_{i=0}^{k-1}\frac{\binom{m}{i}\binom{N-m}{n-i}}{\binom{N}{n}}</span></p>
+<p>Построим график этой функции, учитывая, что аргументом <span class="math inline">k</span> должно быть натуральное число, не превосходящее <span class="math inline">n</span>:</p>
+<div class="sourceCode" id="cb5" data-startFrom="41"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 40;"><span id="cb5-41"><a href="#cb5-41"></a>n_dist_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb5-42"><a href="#cb5-42"></a>    data<span class="op">=</span>(go.Scatter(</span>
+<span id="cb5-43"><a href="#cb5-43"></a>        x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
+<span id="cb5-44"><a href="#cb5-44"></a>        y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(eta.p, n_data_x)),</span>
+<span id="cb5-45"><a href="#cb5-45"></a>    ),),</span>
+<span id="cb5-46"><a href="#cb5-46"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb5-47"><a href="#cb5-47"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb5-48"><a href="#cb5-48"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb5-49"><a href="#cb5-49"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        ),</span>
+<span id="cb5-51"><a href="#cb5-51"></a>        yaxis<span class="op">=</span>go.layout.YAxis(</span>
+<span id="cb5-52"><a href="#cb5-52"></a>            title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb5-53"><a href="#cb5-53"></a>                text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\eta&lt;x)$&#39;</span>,</span>
+<span id="cb5-54"><a href="#cb5-54"></a>            ),</span>
+<span id="cb5-55"><a href="#cb5-55"></a>        ),</span>
+<span id="cb5-56"><a href="#cb5-56"></a>        xaxis<span class="op">=</span>go.layout.XAxis(</span>
+<span id="cb5-57"><a href="#cb5-57"></a>            title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb5-58"><a href="#cb5-58"></a>                text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
+<span id="cb5-59"><a href="#cb5-59"></a>            ),</span>
+<span id="cb5-60"><a href="#cb5-60"></a>        ),</span>
+<span id="cb5-61"><a href="#cb5-61"></a>        <span class="co"># paper_bgcolor=&#39;rgba(0,0,0,0)&#39;,</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a>    ),</span>
+<span id="cb5-63"><a href="#cb5-63"></a>)</span>
+<span id="cb5-64"><a href="#cb5-64"></a>plotly.offline.iplot(n_dist_fig)</span></code></pre></div>
+<p>График будет следующим:</p>
+<figure>
+<img src="../assets/hg_dist.svg" alt="" /><figcaption>Функция распределения гипергеометрического распределния</figcaption>
+</figure>
+</section>
+</section>
+<section id="нормальное-распределение" class="level3">
+<h3>Нормальное распределение</h3>
+<p>Нормальное распределение - непрерывное распределение, описывающее поведение величины отклонения измеряемого значения <span class="math inline">x</span> от истинного значения <span class="math inline">\mu</span> (которое является математическим ожиданием) и в рамках некоторого разброса <span class="math inline">\sigma</span> (среднеквадратичного отклонения). Запишем это формально: <span id="eq:norm_def"><span class="math display">\left\{ \eta \sim N(\mu, \sigma^2) \right\}
+\iff
+\left\{\begin{gathered}
+    F_\eta(x) = \mathbb{P}\left(\, \eta &lt; x \,\right) = \int_{-\infty}^{x} f_\eta(x)dx,\\
+    \text{где } f_\eta(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \text{– плотность вероятности}
+\end{gathered}\right\}\qquad(1.11)</span></span></p>
+<section id="математическое-ожидание-1" class="level4">
+<h4>Математическое ожидание</h4>
+<p>Найдем математическое ожидание <span class="math inline">\eta \sim N(\mu, \sigma^2)</span>: <span class="math display">\begin{aligned}
+    \mathbb{E}\left[\, \eta \,\right] &amp;= \int_{-\infty}^{+\infty} x \cdot f_\eta(x)dx =\\
+                  &amp;= \int_{-\infty}^{+\infty} xe^{-\frac{(x-\mu)^2}{2\sigma^2}}dx =\\
+                  &amp;= \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{+\infty} xe^{-\frac{(x-\mu)^2}{2\sigma^2}}dx
+\end{aligned}</span> Сделаем замену <span class="math inline">t = \frac{x-\mu}{\sqrt{2}\sigma}</span>: <span class="math display">\begin{aligned}
+    \mathbb{E}\left[\, \eta \,\right] &amp;= \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{+\infty}(\sigma\sqrt{2}t + \mu)
+                    e^{-t^2} d\left(\frac{x-\mu}{\sqrt{2}\sigma}\right) =\\
+                  &amp;= \frac{\sigma\sqrt{2}}{\sqrt{\pi}}\int_{-\infty}^{+\infty}te^{-t^2}dt
+                    + \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt =\\
+                  &amp;= \frac{\sigma\sqrt{2}}{\sqrt{\pi}}\left(\int_{-\infty}^{0}te^{-t^2}dt
+                    - \int_{-\infty}^{0}te^{-t^2}dt\right) + \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt =\\
+                  &amp;= \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt
+\end{aligned}</span> Заметим, что получившееся выражение содержит интеграл, который может быть сведен к интегралу <a href="https://ru.wikipedia.org/wiki/Гауссов_интеграл">Эйлера-Пуассона</a>: <span class="math display">\int_{-\infty}^{+\infty}e^{-t^2}dt = 2\int_{0}^{+\infty}e^{-t^2}dt = \sqrt{\pi}</span> Таким образом, <span id="eq:n_expected"><span class="math display">\boxed{
+    \mathbb{E}\left[\, \eta \,\right] = \mu
+}\qquad(1.12)</span></span></p>
+</section>
+<section id="дисперсия-1" class="level4">
+<h4>Дисперсия</h4>
+<p>Подставим <a href="#eq:n_expected">1.12</a> в определение дисперсии <a href="#eq:variance_def">1.7</a>: <span class="math display">\begin{aligned}
+    \mathrm{Var}\left[\, \eta \,\right] &amp;= \mathbb{E}\left[\, (\eta - \mu)^2 \,\right] =\\
+               &amp;= \int_{-\infty}^{+\infty} (x-\mu)^2 \cdot f_{\eta}(x)dx =\\
+               &amp;= \int_{-\infty}^{+\infty}(x-\mu)^2 \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx =\\
+               &amp;= \frac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{+\infty}(x-\mu)^2 e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx
+\end{aligned}</span> Сделаем ту же замену переменной <span class="math inline">t = \frac{x-\mu}{\sqrt{2}\sigma}</span>, тогда <span class="math inline">x = t\sqrt{2}\sigma+\mu</span> и: <span class="math display">\begin{aligned}
+    \mathrm{Var}\left[\, \eta \,\right] &amp;= \frac{1}{\sigma\sqrt{2\pi}}
+                \int_{-\infty}^{+\infty}(\sqrt{2}\sigma)^2 t^2 e^{-t^2}d(t\sqrt{2}\sigma+\mu) =\\
+               &amp;= \frac{2\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t^2 e^{-t^2}dt
+\end{aligned}</span> Проинтегрируем по частям: <span class="math display">\begin{aligned}
+    \mathrm{Var}\left[\, \eta \,\right] &amp;= \frac{\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{+\infty}t 2t e^{-t^2} dt =\\
+               &amp;= \frac{\sigma^2}{\sqrt{\pi}}\left(\left. -t e^{-t^2} \right|_{-\infty}^{+\infty}
+                 + \int_{-\infty}^{+\infty}e^{-t^2}dt\right)
+\end{aligned}</span> Здесь снова появляется интеграл <a href="https://ru.wikipedia.org/wiki/Гауссов_интеграл">Эйлера-Пуассона</a> и, в итоге, получаем: <span class="math display">\boxed{
+    \mathrm{Var}\left[\, \eta \,\right] = \sigma^2
+}</span> То есть, <span class="math inline">\sigma</span> является среднеквадратичным отклонением.</p>
+</section>
+<section id="производящая-функция-моментов-1" class="level4">
+<h4>Производящая функция моментов</h4>
+<p>Производящая функция моментов для <span class="math inline">\eta \sim N(\mu, \sigma^2)</span> имеет вид: <span class="math display">M_\eta(t) = \exp\left(\mu t + \frac{\sigma^2 t^2}{2}\right)</span></p>
+</section>
+<section id="характеристическая-функция-1" class="level4">
+<h4>Характеристическая функция</h4>
+<p>Характеристическая функция для <span class="math inline">\eta \sim N(\mu, \sigma^2)</span> имеет вид: <span class="math display">\varphi_\eta(t) = \exp\left(\mu it + \frac{\sigma^2 t^2}{2}\right)</span></p>
+</section>
+<section id="плотность-вероятности" class="level4">
+<h4>Плотность вероятности</h4>
+<p>Определим класс нормального распределения <code>N</code>, который будет содержать в себе информацию о параметрах <span class="math inline">\mu</span> и <span class="math inline">\sigma</span> и предоставлять следующие методы:</p>
+<ul>
+<li><code>f(x)</code> - возвращает значение плотности в точке <code>x</code></li>
+<li><code>p(k)</code> - возвращает <span class="math inline">\mathbb{P}\left(\, \eta &lt; x \,\right) = \int_{-\infty}^x f_\eta(x)dx</span></li>
+</ul>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> N(<span class="bu">object</span>):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, mu: <span class="bu">float</span>, sigma: <span class="bu">float</span>):</span>
+<span id="cb6-3"><a href="#cb6-3"></a>        <span class="va">self</span>.mu <span class="op">=</span> mu</span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="va">self</span>.sigma <span class="op">=</span> sigma</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="kw">def</span> f(<span class="va">self</span>, x: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>        <span class="cf">return</span> np.exp(<span class="op">-</span>((x<span class="op">-</span><span class="va">self</span>.mu)<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span><span class="va">self</span>.sigma<span class="op">**</span><span class="dv">2</span>))<span class="op">/</span>(<span class="va">self</span>.sigma<span class="op">*</span>(<span class="dv">2</span><span class="op">*</span>np.pi)<span class="op">**</span>.<span class="dv">5</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="kw">def</span> p(<span class="va">self</span>, x: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb6-8"><a href="#cb6-8"></a>        <span class="cf">return</span> sp.integrate.quad(<span class="va">self</span>.f, <span class="op">-</span>np.inf, x)[<span class="dv">0</span>]</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb6-10"><a href="#cb6-10"></a>        <span class="cf">return</span> <span class="ss">f&#39;N(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.mu}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sigma<span class="sc">}</span><span class="ss">^2)&#39;</span></span></code></pre></div>
+<p>Далее создадим объект случайной величины <span class="math inline">\xi \sim HG(30, 15, 20)</span>:</p>
+<div class="sourceCode" id="cb7" data-startFrom="11"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb7-11"><a href="#cb7-11"></a>eta <span class="op">=</span> N(<span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>Следующим шагом, руководствуясь <a href="https://ru.wikipedia.org/wiki/Среднеквадратическое_отклонение#Правило_трёх_сигм">правилом трех сигм</a>определим интервал <span class="math inline">(-3\sigma, 3\sigma)</span>:</p>
+<div class="sourceCode" id="cb8" data-startFrom="12"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 11;"><span id="cb8-12"><a href="#cb8-12"></a>n_data_x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span><span class="op">*</span>eta.sigma, <span class="dv">3</span><span class="op">*</span>eta.sigma, <span class="dv">100</span>)</span></code></pre></div>
+<p>И, наконец, построим плотность, используя метод <code>N.f</code> нашего класса:</p>
+<div class="sourceCode" id="cb9" data-startFrom="13"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 12;"><span id="cb9-13"><a href="#cb9-13"></a>n_dens_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    data<span class="op">=</span>(go.Scatter(</span>
+<span id="cb9-15"><a href="#cb9-15"></a>        x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
+<span id="cb9-16"><a href="#cb9-16"></a>        y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(eta.f, n_data_x)),</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    ),),</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb9-19"><a href="#cb9-19"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb9-20"><a href="#cb9-20"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb9-21"><a href="#cb9-21"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb9-22"><a href="#cb9-22"></a>        ),</span>
+<span id="cb9-23"><a href="#cb9-23"></a>        yaxis<span class="op">=</span>go.layout.YAxis(</span>
+<span id="cb9-24"><a href="#cb9-24"></a>            title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb9-25"><a href="#cb9-25"></a>                text<span class="op">=</span><span class="vs">r&#39;$f_\eta(x)$&#39;</span>,</span>
+<span id="cb9-26"><a href="#cb9-26"></a>            ),</span>
+<span id="cb9-27"><a href="#cb9-27"></a>        ),</span>
+<span id="cb9-28"><a href="#cb9-28"></a>        xaxis<span class="op">=</span>go.layout.XAxis(</span>
+<span id="cb9-29"><a href="#cb9-29"></a>            title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb9-30"><a href="#cb9-30"></a>                text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
+<span id="cb9-31"><a href="#cb9-31"></a>            ),</span>
+<span id="cb9-32"><a href="#cb9-32"></a>        ),</span>
+<span id="cb9-33"><a href="#cb9-33"></a>        <span class="co"># paper_bgcolor=&#39;rgba(0,0,0,0)&#39;,</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a>    ),</span>
+<span id="cb9-35"><a href="#cb9-35"></a>)</span>
+<span id="cb9-36"><a href="#cb9-36"></a>plotly.offline.iplot(n_dens_fig)</span></code></pre></div>
+<p>Получившийся график имеет следующий вид:</p>
+<figure>
+<img src="../assets/n_density.svg" alt="" /><figcaption>Плотность нормального распределения</figcaption>
+</figure>
+</section>
+<section id="функция-распределения-1" class="level4">
+<h4>Функция распределения</h4>
+<p>Для построения функции распределения, будем использовать метод <code>N.p</code>:</p>
+<div class="sourceCode" id="cb10" data-startFrom="37"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 36;"><span id="cb10-37"><a href="#cb10-37"></a>n_dist_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb10-38"><a href="#cb10-38"></a>    data<span class="op">=</span>(</span>
+<span id="cb10-39"><a href="#cb10-39"></a>        go.Scatter(</span>
+<span id="cb10-40"><a href="#cb10-40"></a>            x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
+<span id="cb10-41"><a href="#cb10-41"></a>            y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(eta.p, n_data_x)),</span>
+<span id="cb10-42"><a href="#cb10-42"></a>        ),</span>
+<span id="cb10-43"><a href="#cb10-43"></a>    ),</span>
+<span id="cb10-44"><a href="#cb10-44"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb10-45"><a href="#cb10-45"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb10-46"><a href="#cb10-46"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb10-47"><a href="#cb10-47"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb10-48"><a href="#cb10-48"></a>        ),</span>
+<span id="cb10-49"><a href="#cb10-49"></a>        yaxis<span class="op">=</span>go.layout.YAxis(</span>
+<span id="cb10-50"><a href="#cb10-50"></a>            title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb10-51"><a href="#cb10-51"></a>                text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\eta&lt;x)$&#39;</span>,</span>
+<span id="cb10-52"><a href="#cb10-52"></a>            ),</span>
+<span id="cb10-53"><a href="#cb10-53"></a>        ),</span>
+<span id="cb10-54"><a href="#cb10-54"></a>        xaxis<span class="op">=</span>go.layout.XAxis(</span>
+<span id="cb10-55"><a href="#cb10-55"></a>            title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb10-56"><a href="#cb10-56"></a>                text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
+<span id="cb10-57"><a href="#cb10-57"></a>            ),</span>
+<span id="cb10-58"><a href="#cb10-58"></a>        ),</span>
+<span id="cb10-59"><a href="#cb10-59"></a>        <span class="co"># paper_bgcolor=&#39;rgba(0,0,0,0)&#39;,</span></span>
+<span id="cb10-60"><a href="#cb10-60"></a>    ),</span>
+<span id="cb10-61"><a href="#cb10-61"></a>)</span>
+<span id="cb10-62"><a href="#cb10-62"></a>plotly.offline.iplot(n_dist_fig)</span></code></pre></div>
+<p>Функция распределения имеет вид:</p>
+<figure>
+<img src="../assets/n_distribution.svg" alt="" /><figcaption>Функция распределения нормального распределения</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="примеры-событий-и-интерпретации" class="level2">
+<h2>Примеры событий и интерпретации</h2>
+<section id="гипергеометрическое-распределение-1" class="level3">
+<h3>Гипергеометрическое распределение</h3>
+<section id="типичная-интерпретация" class="level4">
+<h4>Типичная интерпретация</h4>
+<p>Типичной интерпретацией гипергеометрического распределения является выборка без возвращения из множества элементов, некоторые из которых являются помеченными. Представим, что в нашем распоряжении имеется корзина, наполненная шарами двух цветов: черные и белые. Причём всего в корзине находится <span class="math inline">N</span> шаров, <span class="math inline">m</span> из которых – белые. Шары в корзине тщательно перемешиваются, чтобы каждый из них мог быть вытащен с одинаковой вероятностью <span class="math inline">\frac{1}{N}</span>. Далее случайно вытаскиваются <span class="math inline">n</span> шаров без возвращения. Гипергеометрическое распределение описывает вероятность того, что среди вытащенных шаров ровно <span class="math inline">k</span> окажутся белыми.</p>
+<p>Действительно, всего существует <span class="math inline">\binom{N}{n}</span> выборок размера <span class="math inline">n</span>, <span class="math inline">\binom{m}{k}</span> способов выбрать <span class="math inline">k</span> помеченных объектов (белых шаров), и <span class="math inline">\binom{N-m}{n-k}</span> способов заполнить оставшиеся <span class="math inline">n-k</span> <em>слотов</em> непомеченными объектами (черными шарами). Таким образом, вероятность того, что среди <span class="math inline">n</span> вытащенных объектов окажется ровно <span class="math inline">k</span> помеченных, будет равна <span class="math inline">\frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{N}{n}}</span>.</p>
+</section>
+<section id="известные-соотношения-между-распределениями" class="level4">
+<h4>Известные соотношения между распределениями</h4>
+<ul>
+<li>Если зафиксировать размер выборки и количество помеченных элементов, а мощность множества, из которого ведется выборка, устремить к бесконечности, то гипергеометрическое распределение будет сходиться к биномиальному: <span class="math display">HG(N, m, n) \underset{N\to\infty}{\longrightarrow} Bi\left(n, \frac{m}{N}\right)</span></li>
+</ul>
+</section>
+</section>
+<section id="нормальное-распределение-1" class="level3">
+<h3>Нормальное распределение</h3>
+<section id="типичная-интерпретация-1" class="level4">
+<h4>Типичная интерпретация</h4>
+<p>Нормальное распределение описывает нормированную случайную величину, которая является суммой многих случайных слабо взаимосвязанных величин, каждая из которых вносит малый вклад относительно общей суммы. Это вытекает из <a href="https://ru.wikipedia.org/wiki/Центральная_предельная_теорема">центральной предельной теоремы</a>.</p>
+</section>
+<section id="известные-соотношения-между-распределениями-1" class="level4">
+<h4>Известные соотношения между распределениями</h4>
+<ul>
+<li><p>Сумма двух независимых случайных величин, имеющих нормальное распределение, имеет <a href="https://ru.wikipedia.org/wiki/Распределение_Коши">распределение Коши</a>: <span class="math display">\begin{aligned}
+\xi\ &amp;\sim\ N(\mu_1, {\sigma_1}^2)\\
+\eta\ &amp;\sim\ N(\mu_2, {\sigma_2}^2)\\
+\xi+\eta\ &amp;\sim\ C(\mu_1 + \mu_2, \sqrt{{\sigma_1}^2 + {\sigma_2}^2})
+\end{aligned}</span> <!-- http://scask.ru/a_book_tp.php?id=61 --></p></li>
+<li><p>Сумма квадратов <span class="math inline">k</span> независимых стандартных нормальных случайных величин имеет <a href="https://ru.wikipedia.org/wiki/Распределение_хи-квадрат">распределение <span class="math inline">\chi^2</span></a> c <span class="math inline">k</span> степенями свободы: <span class="math display">\begin{aligned}
+\forall i \in \overline{1, k}\quad \xi_i\ &amp;\sim\ N(0, 1)\\
+\sum_{i=1}^k \xi_i &amp;\sim \chi^2(k)
+\end{aligned}</span></p></li>
+<li><p>Натуральный логарифм <a href="https://ru.wikipedia.org/wiki/Логнормальное_распределение">логнормального распределения</a> имеет нормальное распределение: <span class="math display">\begin{aligned}
+\xi &amp;\sim LogN(\mu,\sigma^2)\\
+\ln\xi &amp;\sim N(\mu,\sigma^2)
+\end{aligned}</span></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

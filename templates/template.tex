@@ -14,6 +14,8 @@ $-- listings-numbers-size: latex command (\small)
 $-- listings-numbers-color: hex without # (808080)
 $-- listings-string-color: hex without # (009966)
 $-- listings-rule-color: hew without # (808080)
+$-- header-left: text or latex command (\leftmark)
+$-- header-right: text or latex command (\rightmark)
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -133,6 +135,12 @@ $endif$
 %   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$else$
+  % Workaround for bug in Polyglossia that breaks `\familydefault` when `\setmainlanguage` is used.
+  % See https://github.com/Wandmalfarbe/pandoc-latex-template/issues/8
+  % See https://github.com/reutenauer/polyglossia/issues/186
+  % See https://github.com/reutenauer/polyglossia/issues/127
+  \renewcommand*\familydefault{\sfdefault}
 $endif$
 $if(sansfont)$
   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
@@ -478,6 +486,17 @@ $endif$
 $if(logo)$
 \logo{\includegraphics{$logo$}}
 $endif$
+$endif$
+
+$if(disable-header-and-footer)$$else$
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO,LE]{$if(header-left)$$header-left$$else$\leftmark$endif$}
+\fancyhead[RO,RE]{$if(header-right)$$header-right$$else$\rightmark$endif$}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 $endif$
 
 \begin{document}
