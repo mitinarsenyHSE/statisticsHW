@@ -8,18 +8,7 @@ header-includes:
   - |
     ```{=latex}
     \newfontfamily\cyrillicfont{Times New Roman}
-    ```
-  - |
-    ```{=latex}
-    \RedeclareSectionCommand[
-      beforeskip=-10pt plus -2pt minus -1pt,
-      afterskip=1sp plus -1sp minus 1sp,
-      font=\normalfont\itshape]{paragraph}
-    \RedeclareSectionCommand[
-      beforeskip=-10pt plus -2pt minus -1pt,
-      afterskip=1sp plus -1sp minus 1sp,
-      font=\normalfont\scshape,
-      indent=0pt]{subparagraph} 
+    \definecolor{dodgerblue}{HTML}{1E90FF}
     ```
 
 ##### pandoc-crossref #####
@@ -30,11 +19,12 @@ chapters: true
 ##### LaTeX Variables #####
 
 ### Layout ###
-documentclass: scrreprt
-classoption:
-  - russian
+# documentclass: scrreprt
+# classoption:
+#   - russian
 #   - oneside
 #   - openany
+block-headings: true
 geometry:
   - margin=2.5cm
   - includehead=true
@@ -135,7 +125,7 @@ $$\Expect{\xi^r} = \frac{n \cdot m}{N}
 \sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}$$
 Положим $j := k-1$ и изменим индекс суммирования на $j = \overline{0, n-1}$.
 Заметим, что $n - k = n - (j+1) = (n-1) - j$ и $N - m = (N-1) - (m-1)$:
-$$\Expect{\xi^r} = \frac{n \cdot m}{N} \textcolor{lightblue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
+$$\Expect{\xi^r} = \frac{n \cdot m}{N} \textcolor{dodgerblue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
 \frac{\binom{m-1}{j}\binom{(N-1) - (m-1)}{(n-1) - j}}{\binom{N-1}{n-1}}}$$
 Заметим, что выделенная часть выражения может быть записана, как
 $\Expect{(\theta+1)^{r-1}}$, где $\theta \sim HG(N-1, m-1, n-1)$.
@@ -181,6 +171,7 @@ $$M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n
 {#eq:hg_mgf}
 Здесь ${}_{2}F_{1}$ - это [гипергеометрическая функция](https://en.wikipedia.org/wiki/Hypergeometric_function), определенная следующим образом:
 $${}_{2}F_{1}(a,b;c;z) = \sum_{n=0}^{\infty} \frac{a^{(n)} b^{(n)}}{c^{(n)}} \frac{z^n}{n!}$$
+{#eq:hg_func_def}
 , а $x^{(n)}$ - [возрастающий факториал](https://en.wikipedia.org/wiki/Falling_and_rising_factorials), определенный как:
 $$x^{(n)} = \prod_{k=0}^{n-1} (x + k)$$
 
@@ -190,6 +181,7 @@ $$x^{(n)} = \prod_{k=0}^{n-1} (x + k)$$
 $$\varphi_\xi (t) = \Expect{e^{it\xi}}$$
 Для $\xi \sim HG(N, m, n)$ характеристическая функция [выглядит](https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение) так:
 $$M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^{it}\right)$$
+Здесь ${}_{2}F_{1}$ - это гипергеометрическая функция ([-@eq:hg_func_def]).
 
 #### Гистограмма вероятностей
 
@@ -252,7 +244,6 @@ hg_hist_fig = go.Figure(
         xaxis=go.layout.XAxis(title=go.layout.xaxis.Title(
             text=r'$k$',
         )),
-        paper_bgcolor='rgba(0,0,0,0)',
     ),
 )
 plotly.offline.iplot(hg_hist_fig)
@@ -275,7 +266,7 @@ $$F_\xi(k)
 
 Построим график этой функции, учитывая, что аргументом $k$ должно быть натуральное число,
 не превосходящее $n$:
-```{.python .numberLines startFrom="41"}
+```{.python .numberLines startFrom="40"}
 n_dist_fig = go.Figure(
     data=(go.Scatter(
         x=list(n_data_x),
@@ -518,3 +509,82 @@ $$\begin{aligned}
 \xi &\sim LogN(\mu,\sigma^2)\\
 \ln\xi &\sim N(\mu,\sigma^2)
 \end{aligned}$$
+
+## Способы моделирования случайных величин
+
+Для моделирования выбранных случайных величин, будем использовать библиотеку [SciPy](https://www.scipy.org).
+
+### Гипергеометрическое распределение
+
+Для моделирования гипергеометрического распределения будем использовать класс [`scipy.stats.hypergeom`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html):
+```python
+hg = sp.stats.hypergeom(xi.N,xi.m,xi.n)
+```
+Проверим, что `hg.pmf` возвращает правильные значения для вероятности. Для этого построим с помощью этой функции гистограмму и наложим ее на ту, которую мы получали ранее:
+```{.python .numberLines}
+hg_model_fig = go.Figure(
+    data=(
+        go.Scatter(
+            name=f'model',
+            x=list(hg_data_x),
+            y=hg.pmf(hg_data_x),
+            mode='markers',
+            marker_size=10,
+        ),
+        hg_hist_plot,
+    ),
+    layout=go.Layout(
+        title=go.layout.Title(
+            text=r'$\xi \sim ' + str(xi) + '$',
+            x=.5,
+        ),
+        yaxis=go.layout.YAxis(title=go.layout.yaxis.Title(
+            text=r'$\mathbb{P}(\xi=k)$',
+        )),
+        xaxis=go.layout.XAxis(title=go.layout.xaxis.Title(
+            text=r'$k$',
+        )),
+    ),
+)
+plotly.offline.iplot(hg_model_fig)
+```
+График получится следующий:
+
+![Проверка функции генерации выборки из гипергеометрического распределения с помощью SciPy](../assets/hg_model_fig.svg)
+
+### Нормальное распределение
+
+Для моделирования нормального распределения будем использовать класс [`scipy.stats.norm`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html):
+```python
+n = sp.stats.norm(eta.mu,eta.sigma)
+```
+Проверим, что `n.pdf` возвращает правильные значения для вероятности. Для этого построим с помощью этой функции плотность и наложим ее на ту, которую мы получали ранее:
+```{.python .numberLines}
+n_model_fig = go.Figure(
+    data=(
+        go.Scatter(
+            name=f'model',
+            x=list(n_data_x),
+            y=n.pdf(n_data_x),
+            line_width=8,
+        ),
+        n_dens_plot,
+    ),
+    layout=go.Layout(
+        title=go.layout.Title(
+            text=r'$\eta \sim ' + str(eta) + '$',
+            x=.5,
+        ),
+        yaxis=go.layout.YAxis(title=go.layout.yaxis.Title(
+            text=r'$f_\eta(x)$',
+        )),
+        xaxis=go.layout.XAxis(title=go.layout.xaxis.Title(
+            text=r'$x$',
+        )),
+    ),
+)
+plotly.offline.iplot(n_model_fig)
+```
+График получится следующий:
+
+![Проверка функции генерации выборки из нормального распределения с помощью SciPy](../assets/n_model_fig.svg)

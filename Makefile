@@ -58,6 +58,7 @@ $(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TE
 pdf: $(BUILD_PATH)/index.pdf
 $(BUILD_PATH)/index.pdf: $(SOURCE_FILE) $$(addsuffix .tex,$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
 	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_TEX_OPTIONS) \
+	  --resource-path=.:src \
 	  --template=$(word 2,$^) \
 	  --pdf-engine=$(PDF_ENGINE) \
 	  --output=$@ \

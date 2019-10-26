@@ -91,7 +91,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
   
-  
 </head>
 <body>
 <header id="title-block-header">
@@ -136,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{aligned}\qquad(1.3)</span></span> и, как следствие, <span id="eq:binom-1-cons"><span class="math display">\binom{N}{n}
 = \frac{1}{n} \cdot n \cdot \binom{N}{n}
 = \frac{1}{n} N \binom{N-1}{n-1}\qquad(1.4)</span></span> Подставим <a href="#eq:binom-1">1.3</a> и <a href="#eq:binom-1-cons">1.4</a> в <a href="#eq:hg_moment_raw_k_def">1.2</a>: <span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N}
-\sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}</span> Положим <span class="math inline">j := k-1</span> и изменим индекс суммирования на <span class="math inline">j = \overline{0, n-1}</span>. Заметим, что <span class="math inline">n - k = n - (j+1) = (n-1) - j</span> и <span class="math inline">N - m = (N-1) - (m-1)</span>: <span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N} \textcolor{lightblue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
+\sum_{k=1}^{r-1} \frac{\binom{m-1}{k-1}\binom{N-m}{n-k}}{\binom{N-1}{n-1}}</span> Положим <span class="math inline">j := k-1</span> и изменим индекс суммирования на <span class="math inline">j = \overline{0, n-1}</span>. Заметим, что <span class="math inline">n - k = n - (j+1) = (n-1) - j</span> и <span class="math inline">N - m = (N-1) - (m-1)</span>: <span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N} \textcolor{dodgerblue}{\sum_{j=0}^{n-1} (j+1)^{r-1}
 \frac{\binom{m-1}{j}\binom{(N-1) - (m-1)}{(n-1) - j}}{\binom{N-1}{n-1}}}</span> Заметим, что выделенная часть выражения может быть записана, как <span class="math inline">\mathbb{E}\left[\, (\theta+1)^{r-1} \,\right]</span>, где <span class="math inline">\theta \sim HG(N-1, m-1, n-1)</span>. Следовательно, <span id="eq:hg_moment_raw_k"><span class="math display">\mathbb{E}\left[\, \xi^r \,\right] = \frac{n \cdot m}{N} \mathbb{E}\left[\, (\theta+1)^{r-1} \,\right]\qquad(1.5)</span></span> Таким образом, <span id="eq:hg_expected"><span class="math display">\boxed{
     \mathbb{E}\left[\, \xi \,\right] = \frac{n \cdot m}{N}
 }\qquad(1.6)</span></span></p>
@@ -157,11 +156,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="производящая-функция-моментов" class="level4">
 <h4>Производящая функция моментов</h4>
-<p>По определению, производящая функция моментов <span class="math inline">M_\xi(t)</span> для случайной величины <span class="math inline">\xi</span> – это математическое ожидание новой случайной величины <span class="math inline">e^{t\xi}</span>. То есть: <span id="eq:mgf_def"><span class="math display">M_\xi(t) = \mathbb{E}\left[\, e^{t\xi} \,\right]\qquad(1.9)</span></span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> производящая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span id="eq:hg_mgf"><span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^t\right)\qquad(1.10)</span></span> Здесь <span class="math inline">{}_{2}F_{1}</span> - это <a href="https://en.wikipedia.org/wiki/Hypergeometric_function">гипергеометрическая функция</a>, определенная следующим образом: <span class="math display">{}_{2}F_{1}(a,b;c;z) = \sum_{n=0}^{\infty} \frac{a^{(n)} b^{(n)}}{c^{(n)}} \frac{z^n}{n!}</span> , а <span class="math inline">x^{(n)}</span> - <a href="https://en.wikipedia.org/wiki/Falling_and_rising_factorials">возрастающий факториал</a>, определенный как: <span class="math display">x^{(n)} = \prod_{k=0}^{n-1} (x + k)</span></p>
+<p>По определению, производящая функция моментов <span class="math inline">M_\xi(t)</span> для случайной величины <span class="math inline">\xi</span> – это математическое ожидание новой случайной величины <span class="math inline">e^{t\xi}</span>. То есть: <span id="eq:mgf_def"><span class="math display">M_\xi(t) = \mathbb{E}\left[\, e^{t\xi} \,\right]\qquad(1.9)</span></span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> производящая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span id="eq:hg_mgf"><span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^t\right)\qquad(1.10)</span></span> Здесь <span class="math inline">{}_{2}F_{1}</span> - это <a href="https://en.wikipedia.org/wiki/Hypergeometric_function">гипергеометрическая функция</a>, определенная следующим образом: <span id="eq:hg_func_def"><span class="math display">{}_{2}F_{1}(a,b;c;z) = \sum_{n=0}^{\infty} \frac{a^{(n)} b^{(n)}}{c^{(n)}} \frac{z^n}{n!}\qquad(1.11)</span></span> , а <span class="math inline">x^{(n)}</span> - <a href="https://en.wikipedia.org/wiki/Falling_and_rising_factorials">возрастающий факториал</a>, определенный как: <span class="math display">x^{(n)} = \prod_{k=0}^{n-1} (x + k)</span></p>
 </section>
 <section id="характеристическая-функция" class="level4">
 <h4>Характеристическая функция</h4>
-<p>По определению, характеристическая функция случайно величины <span class="math inline">\xi</span> задается следующим образом: <span class="math display">\varphi_\xi (t) = \mathbb{E}\left[\, e^{it\xi} \,\right]</span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> характеристическая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^{it}\right)</span></p>
+<p>По определению, характеристическая функция случайно величины <span class="math inline">\xi</span> задается следующим образом: <span class="math display">\varphi_\xi (t) = \mathbb{E}\left[\, e^{it\xi} \,\right]</span> Для <span class="math inline">\xi \sim HG(N, m, n)</span> характеристическая функция <a href="https://ru.wikipedia.org/wiki/Гипергеометрическое_распределение">выглядит</a> так: <span class="math display">M_\xi(t) = \frac{\binom{N-D}{n}}{\binom{N}{n}}\ {}_{2}F_{1}\left(-n, -D; N-D-n+1; e^{it}\right)</span> Здесь <span class="math inline">{}_{2}F_{1}</span> - это гипергеометрическая функция (<a href="#eq:hg_func_def">1.11</a>).</p>
 </section>
 <section id="гистограмма-вероятностей" class="level4">
 <h4>Гистограмма вероятностей</h4>
@@ -214,10 +213,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-34"><a href="#cb4-34"></a>        xaxis<span class="op">=</span>go.layout.XAxis(title<span class="op">=</span>go.layout.xaxis.Title(</span>
 <span id="cb4-35"><a href="#cb4-35"></a>            text<span class="op">=</span><span class="vs">r&#39;$k$&#39;</span>,</span>
 <span id="cb4-36"><a href="#cb4-36"></a>        )),</span>
-<span id="cb4-37"><a href="#cb4-37"></a>        paper_bgcolor<span class="op">=</span><span class="st">&#39;rgba(0,0,0,0)&#39;</span>,</span>
-<span id="cb4-38"><a href="#cb4-38"></a>    ),</span>
-<span id="cb4-39"><a href="#cb4-39"></a>)</span>
-<span id="cb4-40"><a href="#cb4-40"></a>plotly.offline.iplot(hg_hist_fig)</span></code></pre></div>
+<span id="cb4-37"><a href="#cb4-37"></a>    ),</span>
+<span id="cb4-38"><a href="#cb4-38"></a>)</span>
+<span id="cb4-39"><a href="#cb4-39"></a>plotly.offline.iplot(hg_hist_fig)</span></code></pre></div>
 <p>Получившаяся гистограмма имеет следующий вид:</p>
 <figure>
 <img src="../assets/hg_hist.svg" alt="" /><figcaption>Гистограмма вероятностей гипергеометрического распределения</figcaption>
@@ -229,30 +227,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 = \sum_{i=0}^{k-1}\mathbb{P}\left(\, \xi = i \,\right)
 = \sum_{i=0}^{k-1}\frac{\binom{m}{i}\binom{N-m}{n-i}}{\binom{N}{n}}</span></p>
 <p>Построим график этой функции, учитывая, что аргументом <span class="math inline">k</span> должно быть натуральное число, не превосходящее <span class="math inline">n</span>:</p>
-<div class="sourceCode" id="cb5" data-startFrom="41"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 40;"><span id="cb5-41"><a href="#cb5-41"></a>n_dist_fig <span class="op">=</span> go.Figure(</span>
-<span id="cb5-42"><a href="#cb5-42"></a>    data<span class="op">=</span>(go.Scatter(</span>
-<span id="cb5-43"><a href="#cb5-43"></a>        x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
-<span id="cb5-44"><a href="#cb5-44"></a>        y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(eta.p, n_data_x)),</span>
-<span id="cb5-45"><a href="#cb5-45"></a>    ),),</span>
-<span id="cb5-46"><a href="#cb5-46"></a>    layout<span class="op">=</span>go.Layout(</span>
-<span id="cb5-47"><a href="#cb5-47"></a>        title<span class="op">=</span>go.layout.Title(</span>
-<span id="cb5-48"><a href="#cb5-48"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
-<span id="cb5-49"><a href="#cb5-49"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
-<span id="cb5-50"><a href="#cb5-50"></a>        ),</span>
-<span id="cb5-51"><a href="#cb5-51"></a>        yaxis<span class="op">=</span>go.layout.YAxis(</span>
-<span id="cb5-52"><a href="#cb5-52"></a>            title<span class="op">=</span>go.layout.yaxis.Title(</span>
-<span id="cb5-53"><a href="#cb5-53"></a>                text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\eta&lt;x)$&#39;</span>,</span>
-<span id="cb5-54"><a href="#cb5-54"></a>            ),</span>
-<span id="cb5-55"><a href="#cb5-55"></a>        ),</span>
-<span id="cb5-56"><a href="#cb5-56"></a>        xaxis<span class="op">=</span>go.layout.XAxis(</span>
-<span id="cb5-57"><a href="#cb5-57"></a>            title<span class="op">=</span>go.layout.xaxis.Title(</span>
-<span id="cb5-58"><a href="#cb5-58"></a>                text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
-<span id="cb5-59"><a href="#cb5-59"></a>            ),</span>
-<span id="cb5-60"><a href="#cb5-60"></a>        ),</span>
-<span id="cb5-61"><a href="#cb5-61"></a>        <span class="co"># paper_bgcolor=&#39;rgba(0,0,0,0)&#39;,</span></span>
-<span id="cb5-62"><a href="#cb5-62"></a>    ),</span>
-<span id="cb5-63"><a href="#cb5-63"></a>)</span>
-<span id="cb5-64"><a href="#cb5-64"></a>plotly.offline.iplot(n_dist_fig)</span></code></pre></div>
+<div class="sourceCode" id="cb5" data-startFrom="40"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 39;"><span id="cb5-40"><a href="#cb5-40"></a>n_dist_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb5-41"><a href="#cb5-41"></a>    data<span class="op">=</span>(go.Scatter(</span>
+<span id="cb5-42"><a href="#cb5-42"></a>        x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
+<span id="cb5-43"><a href="#cb5-43"></a>        y<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(eta.p, n_data_x)),</span>
+<span id="cb5-44"><a href="#cb5-44"></a>    ),),</span>
+<span id="cb5-45"><a href="#cb5-45"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb5-46"><a href="#cb5-46"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb5-47"><a href="#cb5-47"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb5-48"><a href="#cb5-48"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb5-49"><a href="#cb5-49"></a>        ),</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        yaxis<span class="op">=</span>go.layout.YAxis(</span>
+<span id="cb5-51"><a href="#cb5-51"></a>            title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb5-52"><a href="#cb5-52"></a>                text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\eta&lt;x)$&#39;</span>,</span>
+<span id="cb5-53"><a href="#cb5-53"></a>            ),</span>
+<span id="cb5-54"><a href="#cb5-54"></a>        ),</span>
+<span id="cb5-55"><a href="#cb5-55"></a>        xaxis<span class="op">=</span>go.layout.XAxis(</span>
+<span id="cb5-56"><a href="#cb5-56"></a>            title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb5-57"><a href="#cb5-57"></a>                text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
+<span id="cb5-58"><a href="#cb5-58"></a>            ),</span>
+<span id="cb5-59"><a href="#cb5-59"></a>        ),</span>
+<span id="cb5-60"><a href="#cb5-60"></a>        <span class="co"># paper_bgcolor=&#39;rgba(0,0,0,0)&#39;,</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a>    ),</span>
+<span id="cb5-62"><a href="#cb5-62"></a>)</span>
+<span id="cb5-63"><a href="#cb5-63"></a>plotly.offline.iplot(n_dist_fig)</span></code></pre></div>
 <p>График будет следующим:</p>
 <figure>
 <img src="../assets/hg_dist.svg" alt="" /><figcaption>Функция распределения гипергеометрического распределния</figcaption>
@@ -266,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \left\{\begin{gathered}
     F_\eta(x) = \mathbb{P}\left(\, \eta &lt; x \,\right) = \int_{-\infty}^{x} f_\eta(x)dx,\\
     \text{где } f_\eta(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \text{– плотность вероятности}
-\end{gathered}\right\}\qquad(1.11)</span></span></p>
+\end{gathered}\right\}\qquad(1.12)</span></span></p>
 <section id="математическое-ожидание-1" class="level4">
 <h4>Математическое ожидание</h4>
 <p>Найдем математическое ожидание <span class="math inline">\eta \sim N(\mu, \sigma^2)</span>: <span class="math display">\begin{aligned}
@@ -283,11 +281,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                   &amp;= \frac{\mu}{\sqrt{\pi}}\int_{-\infty}^{+\infty}e^{-t^2}dt
 \end{aligned}</span> Заметим, что получившееся выражение содержит интеграл, который может быть сведен к интегралу <a href="https://ru.wikipedia.org/wiki/Гауссов_интеграл">Эйлера-Пуассона</a>: <span class="math display">\int_{-\infty}^{+\infty}e^{-t^2}dt = 2\int_{0}^{+\infty}e^{-t^2}dt = \sqrt{\pi}</span> Таким образом, <span id="eq:n_expected"><span class="math display">\boxed{
     \mathbb{E}\left[\, \eta \,\right] = \mu
-}\qquad(1.12)</span></span></p>
+}\qquad(1.13)</span></span></p>
 </section>
 <section id="дисперсия-1" class="level4">
 <h4>Дисперсия</h4>
-<p>Подставим <a href="#eq:n_expected">1.12</a> в определение дисперсии <a href="#eq:variance_def">1.7</a>: <span class="math display">\begin{aligned}
+<p>Подставим <a href="#eq:n_expected">1.13</a> в определение дисперсии <a href="#eq:variance_def">1.7</a>: <span class="math display">\begin{aligned}
     \mathrm{Var}\left[\, \eta \,\right] &amp;= \mathbb{E}\left[\, (\eta - \mu)^2 \,\right] =\\
                &amp;= \int_{-\infty}^{+\infty} (x-\mu)^2 \cdot f_{\eta}(x)dx =\\
                &amp;= \int_{-\infty}^{+\infty}(x-\mu)^2 \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx =\\
@@ -439,6 +437,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{aligned}</span></p></li>
 </ul>
 </section>
+</section>
+</section>
+<section id="способы-моделирования-случайных-величин" class="level2">
+<h2>Способы моделирования случайных величин</h2>
+<p>Для моделирования выбранных случайных величин, будем использовать библиотеку <a href="https://www.scipy.org">SciPy</a>.</p>
+<section id="гипергеометрическое-распределение-2" class="level3">
+<h3>Гипергеометрическое распределение</h3>
+<p>Для моделирования гипергеометрического распределения будем использовать класс <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html"><code>scipy.stats.hypergeom</code></a>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>hg <span class="op">=</span> sp.stats.hypergeom(xi.N,xi.m,xi.n)</span></code></pre></div>
+<p>Проверим, что <code>hg.pmf</code> возвращает правильные значения для вероятности. Для этого построим с помощью этой функции гистограмму и наложим ее на ту, которую мы получали ранее:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>hg_model_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    data<span class="op">=</span>(</span>
+<span id="cb12-3"><a href="#cb12-3"></a>        go.Scatter(</span>
+<span id="cb12-4"><a href="#cb12-4"></a>            name<span class="op">=</span><span class="ss">f&#39;model&#39;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>            x<span class="op">=</span><span class="bu">list</span>(hg_data_x),</span>
+<span id="cb12-6"><a href="#cb12-6"></a>            y<span class="op">=</span>hg.pmf(hg_data_x),</span>
+<span id="cb12-7"><a href="#cb12-7"></a>            mode<span class="op">=</span><span class="st">&#39;markers&#39;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>            marker_size<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>        ),</span>
+<span id="cb12-10"><a href="#cb12-10"></a>        hg_hist_plot,</span>
+<span id="cb12-11"><a href="#cb12-11"></a>    ),</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb12-13"><a href="#cb12-13"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb12-14"><a href="#cb12-14"></a>            text<span class="op">=</span><span class="vs">r&#39;$\xi \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(xi) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb12-15"><a href="#cb12-15"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb12-16"><a href="#cb12-16"></a>        ),</span>
+<span id="cb12-17"><a href="#cb12-17"></a>        yaxis<span class="op">=</span>go.layout.YAxis(title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>            text<span class="op">=</span><span class="vs">r&#39;$\mathbb</span><span class="sc">{P}</span><span class="vs">(\xi=k)$&#39;</span>,</span>
+<span id="cb12-19"><a href="#cb12-19"></a>        )),</span>
+<span id="cb12-20"><a href="#cb12-20"></a>        xaxis<span class="op">=</span>go.layout.XAxis(title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb12-21"><a href="#cb12-21"></a>            text<span class="op">=</span><span class="vs">r&#39;$k$&#39;</span>,</span>
+<span id="cb12-22"><a href="#cb12-22"></a>        )),</span>
+<span id="cb12-23"><a href="#cb12-23"></a>    ),</span>
+<span id="cb12-24"><a href="#cb12-24"></a>)</span>
+<span id="cb12-25"><a href="#cb12-25"></a>plotly.offline.iplot(hg_model_fig)</span></code></pre></div>
+<p>График получится следующий:</p>
+<figure>
+<img src="../assets/hg_model_fig.svg" alt="" /><figcaption>Проверка функции генерации выборки из гипергеометрического распределения с помощью SciPy</figcaption>
+</figure>
+</section>
+<section id="нормальное-распределение-2" class="level3">
+<h3>Нормальное распределение</h3>
+<p>Для моделирования нормального распределения будем использовать класс <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html"><code>scipy.stats.norm</code></a>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>n <span class="op">=</span> sp.stats.norm(eta.mu,eta.sigma)</span></code></pre></div>
+<p>Проверим, что <code>n.pdf</code> возвращает правильные значения для вероятности. Для этого построим с помощью этой функции плотность и наложим ее на ту, которую мы получали ранее:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>n_model_fig <span class="op">=</span> go.Figure(</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    data<span class="op">=</span>(</span>
+<span id="cb14-3"><a href="#cb14-3"></a>        go.Scatter(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>            name<span class="op">=</span><span class="ss">f&#39;model&#39;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>            x<span class="op">=</span><span class="bu">list</span>(n_data_x),</span>
+<span id="cb14-6"><a href="#cb14-6"></a>            y<span class="op">=</span>n.pdf(n_data_x),</span>
+<span id="cb14-7"><a href="#cb14-7"></a>            line_width<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb14-8"><a href="#cb14-8"></a>        ),</span>
+<span id="cb14-9"><a href="#cb14-9"></a>        n_dens_plot,</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    ),</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    layout<span class="op">=</span>go.Layout(</span>
+<span id="cb14-12"><a href="#cb14-12"></a>        title<span class="op">=</span>go.layout.Title(</span>
+<span id="cb14-13"><a href="#cb14-13"></a>            text<span class="op">=</span><span class="vs">r&#39;$\eta \sim &#39;</span> <span class="op">+</span> <span class="bu">str</span>(eta) <span class="op">+</span> <span class="st">&#39;$&#39;</span>,</span>
+<span id="cb14-14"><a href="#cb14-14"></a>            x<span class="op">=</span>.<span class="dv">5</span>,</span>
+<span id="cb14-15"><a href="#cb14-15"></a>        ),</span>
+<span id="cb14-16"><a href="#cb14-16"></a>        yaxis<span class="op">=</span>go.layout.YAxis(title<span class="op">=</span>go.layout.yaxis.Title(</span>
+<span id="cb14-17"><a href="#cb14-17"></a>            text<span class="op">=</span><span class="vs">r&#39;$f_\eta(x)$&#39;</span>,</span>
+<span id="cb14-18"><a href="#cb14-18"></a>        )),</span>
+<span id="cb14-19"><a href="#cb14-19"></a>        xaxis<span class="op">=</span>go.layout.XAxis(title<span class="op">=</span>go.layout.xaxis.Title(</span>
+<span id="cb14-20"><a href="#cb14-20"></a>            text<span class="op">=</span><span class="vs">r&#39;$x$&#39;</span>,</span>
+<span id="cb14-21"><a href="#cb14-21"></a>        )),</span>
+<span id="cb14-22"><a href="#cb14-22"></a>    ),</span>
+<span id="cb14-23"><a href="#cb14-23"></a>)</span>
+<span id="cb14-24"><a href="#cb14-24"></a>plotly.offline.iplot(n_model_fig)</span></code></pre></div>
+<p>График получится следующий:</p>
+<figure>
+<img src="../assets/n_model_fig.svg" alt="" /><figcaption>Проверка функции генерации выборки из нормального распределения с помощью SciPy</figcaption>
+</figure>
 </section>
 </section>
 </section>
