@@ -33,7 +33,7 @@ PANDOC_HTML_OPTIONS =\
 
 PANDOC_TEX_OPTIONS =\
   --listings \
-  
+
 
 .PHONY: all
 all: html tex pdf nojekyll
@@ -56,7 +56,7 @@ pdf: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
   --pdf-engine=$(PANDOC_PDF_ENGINE)
 pdf: $(BUILD_PATH)/index.pdf
 
-$(BUILD_PATH)/index.%: $(SOURCE_FILE) $$(PANDOC_TEMPLATE) | $$(@D)/.f
+$(BUILD_PATH)/%: $(SOURCE_FILE) $$(PANDOC_TEMPLATE) | $$(@D)/.f
 	$(PANDOC) $(PANDOC_SOURCE_DEFAULT_OPTIONS) $(PANDOC_OPTIONS) --output=$@ $<
 
 .PRECIOUS: $(BUILD_PATH)/.f
