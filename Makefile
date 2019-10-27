@@ -18,53 +18,46 @@ ifeq ($(PANDOC_VERBOSE), 1)
 	$(info PANDOC_VERBOSE found)
 endif
 
-PANDOC_TEMPLATE_BASENAME = $(TEMPLATES_PATH)/template
-
-PANDOC_BUILD_FORMATS =\
-  html \
-  tex \
-  pdf \
-
-pandoc_html_template = $(PANDOC_TEMPLATE_BASENAME).html
-pandoc_tex_template = $(PANDOC_TEMPLATE_BASENAME).tex
-pandoc_pdf_template = $(PANDOC_TEMPLATE_BASENAME).tex
-
-pandoc_source_default_options =\
+PANDOC_SOURCE_DEFAULT_OPTIONS =\
   --from=markdown+intraword_underscores \
   --filter=pandoc-crossref \
   --resource-path=$(SOURCE_PATH):. \
   # --top-level-division=chapter \
 
-pandoc_html_options =\
-  --css=$(PANDOC_TEMPLATE_BASENAME).css \
+PANDOC_HTML_OPTIONS =\
+  --css=$(TEMPLATES_PATH)/template.css \
   --section-divs \
   --katex \
   --standalone \
   # --self-contained
 
-pandoc_html = $(pandoc_html_options) \
-  --to=html5
-
-pandoc_tex_options =\
+PANDOC_TEX_OPTIONS =\
   --listings \
+  
 
-pandoc_tex = $(pandoc_tex_options) \
-  --to=latex
+.PHONY: all
+all: html tex pdf nojekyll
 
-pandoc_pdf = $(pandoc_tex_options) \
-  --pdf-engine=$(PANDOC_PDF_ENGINE) \
+.PHONY: html
+html: PANDOC_OPTIONS = $(PANDOC_HTML_OPTIONS) \
+  --to=html5 \
+  --template=$(TEMPLATES_PATH)/template.html
+html: $(BUILD_PATH)/index.html
 
+.PHONY: tex
+tex: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
+  --to=latex \
+  --template=$(TEMPLATES_PATH)/template.tex
+tex: $(BUILD_PATH)/index.tex
 
-.PHONY: all $(PANDOC_BUILD_FORMATS)
-all: $(PANDOC_BUILD_FORMATS) nojekyll
+.PHONY: pdf
+pdf: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
+  --template=$(TEMPLATES_PATH)/template.tex \
+  --pdf-engine=$(PANDOC_PDF_ENGINE)
+pdf: $(BUILD_PATH)/index.pdf
 
-$(PANDOC_BUILD_FORMATS): %: $(BUILD_PATH)/index.%
-
-$(addprefix $(BUILD_PATH)/index.,$(PANDOC_BUILD_FORMATS)): $(BUILD_PATH)/index.%: $(SOURCE_FILE) $$(pandoc_%_template) | $$(@D)/.f
-	$(PANDOC) $(pandoc_source_default_options) $(pandoc_$(patsubst .%,%,$(suffix $@))) \
-	  --template=$(word 2,$^) \
-	  --output=$@ \
-	  $<
+$(BUILD_PATH)/index.%: $(SOURCE_FILE) $$(PANDOC_TEMPLATE) | $$(@D)/.f
+	$(PANDOC) $(PANDOC_SOURCE_DEFAULT_OPTIONS) $(PANDOC_OPTIONS) --output=$@ $<
 
 .PRECIOUS: $(BUILD_PATH)/.f
 $(BUILD_PATH)/.f:
