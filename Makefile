@@ -2,68 +2,69 @@
 
 PANDOC_VERBOSE ?= 0
 
+SOURCE_PATH ?= src
 SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
 TEMPLATES_PATH ?= templates
 
+PANDOC_PDF_ENGINE ?= lualatex
+
 PANDOC = pandoc \
-	# --fail-if-warnings \
+  # --fail-if-warnings \
 
 ifeq ($(PANDOC_VERBOSE), 1)
 	PANDOC +=\
 	  --verbose
+	$(info PANDOC_VERBOSE found)
 endif
-
-PANDOC_MD_OPTIONS =\
-	--from=markdown+intraword_underscores \
-	--filter=pandoc-crossref \
-	# --top-level-division=chapter \
-
-PANDOC_HTML_OPTIONS =\
-	--css=../templates/template.css \
-	# --self-contained
-
-PANDOC_TEX_OPTIONS =\
-	--listings
-
 
 PANDOC_TEMPLATE_BASENAME = $(TEMPLATES_PATH)/template
 
-PDF_ENGINE = lualatex
+PANDOC_BUILD_FORMATS =\
+  html \
+  tex \
+  pdf \
 
-.PHONY: all
-all: pdf html nojekyll
+pandoc_html_template = $(PANDOC_TEMPLATE_BASENAME).html
+pandoc_tex_template = $(PANDOC_TEMPLATE_BASENAME).tex
+pandoc_pdf_template = $(PANDOC_TEMPLATE_BASENAME).tex
 
-.PHONY: html
-html: $(BUILD_PATH)/index.html
-$(BUILD_PATH)/index.html: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_HTML_OPTIONS) \
-	  --to=html5 \
+pandoc_source_default_options =\
+  --from=markdown+intraword_underscores \
+  --filter=pandoc-crossref \
+  --resource-path=$(SOURCE_PATH):. \
+  # --top-level-division=chapter \
+
+pandoc_html_options =\
+  --css=$(PANDOC_TEMPLATE_BASENAME).css \
+  --section-divs \
+  --katex \
+  --standalone \
+  # --self-contained
+
+pandoc_html = $(pandoc_html_options) \
+  --to=html5
+
+pandoc_tex_options =\
+  --listings \
+
+pandoc_tex = $(pandoc_tex_options) \
+  --to=latex
+
+pandoc_pdf = $(pandoc_tex_options) \
+  --pdf-engine=$(PANDOC_PDF_ENGINE) \
+
+
+.PHONY: all $(PANDOC_BUILD_FORMATS)
+all: $(PANDOC_BUILD_FORMATS) nojekyll
+
+$(PANDOC_BUILD_FORMATS): %: $(BUILD_PATH)/index.%
+
+$(addprefix $(BUILD_PATH)/index.,$(PANDOC_BUILD_FORMATS)): $(BUILD_PATH)/index.%: $(SOURCE_FILE) $$(pandoc_%_template) | $$(@D)/.f
+	$(PANDOC) $(pandoc_source_default_options) $(pandoc_$(patsubst .%,%,$(suffix $@))) \
 	  --template=$(word 2,$^) \
-	  --standalone \
-	  --section-divs \
-	  --katex \
 	  --output=$@ \
 	  $<
-
-.PHONY: tex
-tex: $(BUILD_PATH)/index.tex
-$(BUILD_PATH)/index.tex: $(SOURCE_FILE) $$(addsuffix $$(suffix $$@),$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_TEX_OPTIONS) \
-	  --template=$(word 2,$^) \
-	  --output=$@ \
-	  $<
-
-.PHONY: pdf
-pdf: $(BUILD_PATH)/index.pdf
-$(BUILD_PATH)/index.pdf: $(SOURCE_FILE) $$(addsuffix .tex,$$(PANDOC_TEMPLATE_BASENAME)) | $$(@D)/.f
-	$(PANDOC) $(PANDOC_MD_OPTIONS) $(PANDOC_TEX_OPTIONS) \
-	  --resource-path=.:src \
-	  --template=$(word 2,$^) \
-	  --pdf-engine=$(PDF_ENGINE) \
-	  --output=$@ \
-	  $<
-
 
 .PRECIOUS: $(BUILD_PATH)/.f
 $(BUILD_PATH)/.f:
