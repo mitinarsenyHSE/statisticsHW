@@ -1,7 +1,5 @@
 .SECONDEXPANSION:
 
-PANDOC_VERBOSE ?= 0
-
 SOURCE_PATH ?= src
 SOURCE_FILE ?= src/hw.md
 BUILD_PATH ?= build
@@ -12,7 +10,7 @@ PANDOC_PDF_ENGINE ?= lualatex
 PANDOC = pandoc \
   # --fail-if-warnings \
 
-ifeq ($(PANDOC_VERBOSE), 1)
+ifdef PANDOC_VERBOSE
 	PANDOC +=\
 	  --verbose
 endif
