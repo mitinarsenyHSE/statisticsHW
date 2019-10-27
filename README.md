@@ -14,6 +14,10 @@
   </p>
 </p>
 
+## PDF
+
+Here is PDF document: [index.pdf](build/index.pdf).
+
 ## Dependencies
 
 * [Docker](https://www.docker.com)
@@ -28,9 +32,15 @@ docker-compose up --build
 
 Then navigate to `http://localhost:8888?token=<token_from_logs>` in your browser.
 
-## Build PDF
+## Build
 
-In order to build `.pdf` document run:
+To build all:
+
+```bash
+docker run --rm -v "${PWD}:/data" --entrypoint="make" mitinarseny/panmake:2.7.3
+```
+
+PDF only:
 
 ```bash
 docker run --rm -v "${PWD}:/data" --entrypoint="make" mitinarseny/panmake:2.7.3 pdf
