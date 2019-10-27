@@ -7,7 +7,7 @@ lang: ru
 header-includes:
   - |
     ```{=latex}
-    \newfontfamily\cyrillicfont{Times New Roman}
+    \newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
     \definecolor{dodgerblue}{HTML}{1E90FF}
     ```
 
@@ -27,8 +27,8 @@ chapters: true
 block-headings: true
 geometry:
   - margin=2.5cm
-  - includehead=true
-  - includefoot=true
+#   - includehead=true
+#   - includefoot=true
 #   - centering
 papersize: a4
 numbersections: true
@@ -36,10 +36,7 @@ secnumdepth: 2
 
 ### Fonts ###
 fontenc: "T2A,T1"
-# mainfont: Arial
 mainfont: Times New Roman
-mainfontoptions:
-  - Script=Cyrillic
 
 ### Links ###
 linkcolor: blue
@@ -49,8 +46,6 @@ toc: true
 toc-depth: 2
 
 # Variables for template https://github.com/Wandmalfarbe/pandoc-latex-template
-# book: true
-# mainfont: Arial
 titlepage: true
 titlepage-background: "assets/titlepage-background.pdf"
 toc-own-page: true
@@ -287,7 +282,6 @@ n_dist_fig = go.Figure(
                 text=r'$x$',
             ),
         ),
-        # paper_bgcolor='rgba(0,0,0,0)',
     ),
 )
 plotly.offline.iplot(n_dist_fig)
@@ -423,7 +417,6 @@ n_dens_fig = go.Figure(
                 text=r'$x$',
             ),
         ),
-        # paper_bgcolor='rgba(0,0,0,0)',
     ),
 )
 plotly.offline.iplot(n_dens_fig)
@@ -458,7 +451,6 @@ n_dist_fig = go.Figure(
                 text=r'$x$',
             ),
         ),
-        # paper_bgcolor='rgba(0,0,0,0)',
     ),
 )
 plotly.offline.iplot(n_dist_fig)

@@ -19,9 +19,9 @@ endif
 
 PANDOC_SOURCE_DEFAULT_OPTIONS =\
   --from=markdown+intraword_underscores \
-  --filter=pandoc-crossref \
   --resource-path=$(SOURCE_PATH):. \
-  # --top-level-division=chapter \
+  --filter=pandoc-crossref \
+#   --top-level-division=chapter \
 
 PANDOC_HTML_OPTIONS =\
   --css=$(TEMPLATES_PATH)/template.css \
@@ -45,16 +45,14 @@ html: PANDOC_OPTIONS = $(PANDOC_HTML_OPTIONS) \
 html: $(BUILD_PATH)/index.html
 
 .PHONY: tex
-tex: PANDOC_TEMPLATE = $(TEMPLATES_PATH)/template.tex
 tex: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
   --to=latex \
-  --template=$(PANDOC_TEMPLATE)
+  --template=https://raw.githubusercontent.com/mitinarseny/pandoc_templates/master/default.tex
 tex: $(BUILD_PATH)/index.tex
 
 .PHONY: pdf
-pdf: PANDOC_TEMPLATE = $(TEMPLATES_PATH)/template.tex
 pdf: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
-  --template=$(PANDOC_TEMPLATE) \
+  --template=https://raw.githubusercontent.com/mitinarseny/pandoc_templates/master/default.tex \
   --pdf-engine=$(PANDOC_PDF_ENGINE)
 
 pdf: $(BUILD_PATH)/index.pdf
