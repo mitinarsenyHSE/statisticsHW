@@ -45,20 +45,28 @@ html: PANDOC_OPTIONS = $(PANDOC_HTML_OPTIONS) \
 html: $(BUILD_PATH)/index.html
 
 .PHONY: tex
+tex: PANDOC_TEMPLATE = $(TEMPLATES_PATH)/template.tex
 tex: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
   --to=latex \
-  --template=https://raw.githubusercontent.com/mitinarseny/pandoc_templates/master/default.tex
+  --template=$(PANDOC_TEMPLATE)
 tex: $(BUILD_PATH)/index.tex
 
 .PHONY: pdf
+pdf: PANDOC_TEMPLATE = $(TEMPLATES_PATH)/template.tex
 pdf: PANDOC_OPTIONS = $(PANDOC_TEX_OPTIONS) \
-  --template=https://raw.githubusercontent.com/mitinarseny/pandoc_templates/master/default.tex \
+  --template=$(PANDOC_TEMPLATE) \
   --pdf-engine=$(PANDOC_PDF_ENGINE)
-
 pdf: $(BUILD_PATH)/index.pdf
 
 $(BUILD_PATH)/%: $(SOURCE_FILE) $$(PANDOC_TEMPLATE) | $$(@D)/.f
 	$(PANDOC) $(PANDOC_SOURCE_DEFAULT_OPTIONS) $(PANDOC_OPTIONS) --output=$@ $<
+
+$(TEMPLATES_PATH)/template.tex:
+	curl \
+	  --siltent \
+	  --location \
+	  --output $@ \
+	  "https://raw.githubusercontent.com/mitinarseny/pandoc_templates/master/default.tex"
 
 .PRECIOUS: $(BUILD_PATH)/.f
 $(BUILD_PATH)/.f:

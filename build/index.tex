@@ -21,7 +21,8 @@
   \typeout{Setting Fonts for luatex or xetex}
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
-  \setmainfont[]{Times New Roman}
+  \setmainfont{Times New Roman}
+  \newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
   \setmonofont[
     Contextuals={Alternate} % Activate the calt feature
   ]{Fira Code}
@@ -137,7 +138,6 @@
 \usepackage{float}
 \floatplacement{figure}{H}
 
-\newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
 \definecolor{dodgerblue}{HTML}{1E90FF}
 \makeatletter
 \@ifpackageloaded{subfig}{}{\usepackage{subfig}}

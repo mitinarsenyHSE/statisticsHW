@@ -7,7 +7,6 @@ lang: ru
 header-includes:
   - |
     ```{=latex}
-    \newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
     \definecolor{dodgerblue}{HTML}{1E90FF}
     ```
 
@@ -33,10 +32,6 @@ geometry:
 papersize: a4
 numbersections: true
 secnumdepth: 2
-
-### Fonts ###
-fontenc: "T2A,T1"
-mainfont: Times New Roman
 
 ### Links ###
 linkcolor: blue
