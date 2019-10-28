@@ -1,6 +1,6 @@
 ---
 title: Домашняя работа по Математической Статистике
-author: &author Митин Арсений (3 курс, СКБ171)
+author: Митин Арсений (3 курс, СКБ171)
 date: '26.10.2019'
 keywords: [Statistics]
 lang: ru
@@ -40,17 +40,8 @@ linkcolor: blue
 toc: true
 toc-depth: 2
 
-# Variables for template https://github.com/Wandmalfarbe/pandoc-latex-template
-titlepage: true
-titlepage-background: "assets/titlepage-background.pdf"
+# Variables for template https://github.com/mitinarseny/pandoc_templates/blob/master/default.tex
 toc-own-page: true
-
-# titlepage-color: "07407B"
-# titlepage-text-color: "00"
-# titlepage-rule-color: "F7931E"
-# header-left: Домашняя работа
-# header-right: *author
-# footer-left: false
 ---
 <!-- mathFunc{name, leftDelim, argument, rightDelim} -->
 \providecommand{\mathFunc}[4]{#1\left#2\, #3 \,\right#4}
